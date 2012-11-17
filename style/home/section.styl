@@ -1,0 +1,54 @@
+.home-section
+  position: relative
+  text-align: center
+
+  &:before
+    border-bottom: 1px solid rgba(black, 0.25)
+    border-top: 1px solid white
+    box-shadow: 0 -1px 0 rgba(black, 0.25), 0 1px 0 white
+    content: ""
+    height: 3px
+    left: 0
+    position: absolute
+    top: 20px
+    width: 100%
+
+  header
+    font: 30px "Open Sans Condensed", sans-serif
+    text-align: center
+    text-transform: uppercase
+
+    > strong
+      background: $bg-color
+      display: inline-block
+      padding: 0 10px;
+      position: relative
+
+  figure
+    float: left
+    margin: 0
+    transition: width 0.25s ease-in-out
+    width: 50%
+
+    @media (max-width: 400px)
+      &
+        width: 100%;
+
+    img
+      border: 2px solid #fff
+      width: 100%;
+
+  .content
+    box-sizing: border-box
+    float: left
+    padding-left: 30px
+    text-align: left
+    transition: width 0.25s ease-in-out
+    width: 50%
+
+    @media (max-width: 400px)
+      &
+        width: 100%;
+
+    a
+      background: blue

@@ -13,11 +13,14 @@ class Model extends window.App.Events
   fromJSON: (data) =>
     @[key] = value for key, value of data
 
+  @all:=>
+    @models
+
   @fetchAll: ->
     $.getJSON "https://#{@base_url}/#{@url}.json?callback=?", (data) =>
-      models = new Array
-      models.push new @({data: datum}) for datum in data
-      @trigger 'fetch-all', models
+      @models = new Array
+      @models.push new @({data: datum}) for datum in data
+      @trigger 'fetch-all', @models
 
   @fetchById: (id) ->
     $.getJSON "https://#{@base_url}/#{@url}/#{id}.json?callback=?", (data) ->

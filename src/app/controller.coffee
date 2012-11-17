@@ -1,32 +1,31 @@
 class Controller
   constructor: (@selector, @model) ->
     @el = $(@selector)
-    @models = new Array
+    @models = new Object
     @model.on 'fetch-all', (models) =>
-      @models = models
-      @renderAll()
-    @model.on 'fetch', (model) =>
-      @models[model.id] = model
-      @renderOne model.id
+      @models[model.name] = model for model in models
+    @model.fetchAll()
+    @startRouting()
 
-  starRouting: =>
+  startRouting: =>
     window.on 'hashchange', @route
+    @route()
+
+  stopRouting: =>
+    window.off 'hashchange'
 
   route: =>
-    hash = parseInt location.hash
+    @hash = location.hash
     @el.empty()
-    if hash is ''
+    if @hash is ''
       @index()
     else
       @show hash
 
   index: =>
-    @model.fetchAll()
+    @renderAll()
 
-  show: (id) =>
-    if typeof @models[id] is 'undefined'
-      @model.fetchById id
-    else
-      @renderOne id
+  show: (name) =>
+    @renderOne @models[name]
 
 window.App.Controller = Controller

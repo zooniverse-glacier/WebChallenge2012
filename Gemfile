@@ -14,8 +14,9 @@ group :development do
   gem 'nifty-generators'
   gem 'pry'
   gem 'sqlite3'
-  gem 'therubyracer'
 end
+
+gem 'therubyracer'
 
 group :production do
   gem 'pg'

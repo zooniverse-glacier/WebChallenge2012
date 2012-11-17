@@ -1,5 +1,5 @@
 class School < ActiveRecord::Base
-  attr_accessible :name, :story, :enabled, :timeline_start_at, :position, :timeline_end_at
+  attr_accessible :name, :story, :enabled, :timeline_start_at, :position, :timeline_end_at, :events_attributes
   
   before_save :validate_dates
   validates_presence_of :name

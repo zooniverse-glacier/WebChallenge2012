@@ -43,11 +43,30 @@
   </div>
   
   <div class="control-group">
+    <%= f.label :Events, class: 'control-label' %>
+    
+    <div class="controls">
     <%= f.fields_for :events do |event| %>
-      <%= event.label :description %>
-      <%= event.text_field :description %>
-      <%= event.date_select :date %>
+      <div class="well">
+        <div class="control-group">
+          <%= event.label :description, class: 'control-label' %>
+          <div class="controls">
+            <%= event.text_field :description %>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <%= event.label :date, class: 'control-label' %>
+          <div class="controls">
+            <div class="input-append date" data-date="<%= Time.now.strftime('%Y-%m-%d') %>" data-date-format="yyyy-mm-dd" data-behavior="datepicker">
+              <%= event.text_field :date, class: 'span2' %>
+              <span class="add-on"><i class="icon-th"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>  
     <%- end -%>
+    </div>
   </div>
   
   <div class="control-group">

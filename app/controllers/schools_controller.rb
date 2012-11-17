@@ -5,14 +5,14 @@ class SchoolsController < ApplicationController
   def index
     respond_to do |format|
       format.html{ @schools = School.all }
-      format.json{ respond_with School.for_json.all }
+      format.json{ respond_with School.for_json.all, include: :projects }
     end
   end
   
   def show
     respond_to do |format|
       format.html{ @school = School.find(params[:id]) }
-      format.json{ respond_with School.for_json.find(params[:id]) }
+      format.json{ respond_with School.for_json.find(params[:id]), include: :projects }
     end
   end
   

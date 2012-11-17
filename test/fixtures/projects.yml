@@ -1,0 +1,11 @@
+one:
+  school_id: 1
+  description: MyText
+  cost: 1
+  enabled: false
+
+two:
+  school_id: 1
+  description: MyText
+  cost: 1
+  enabled: false

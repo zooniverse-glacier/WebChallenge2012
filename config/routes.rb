@@ -1,4 +1,6 @@
 Pangea::Application.routes.draw do
+  resources :projects
+
   resources :schools
 
   match 'user/edit' => 'users#edit', :as => :edit_current_user

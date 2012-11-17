@@ -8,7 +8,8 @@ class Map extends window.App.Model
     @defaultZoom = opts.zoom || 13
     @styleUrl    = opts.styleUrl || "http://{s}.tile.cloudmade.com/703a104d15d44e2885f6cedeaaec6d30/78177/256/{z}/{x}/{y}.png"
     @center  = L.LatLng(opts.lat, opts.lng)
-
+    @setupMap()
+    
   setupMap: ->
     @map = L.map @el.attr('id')  
       center: [51.505, -0.09],

@@ -16,10 +16,9 @@ group :development do
   gem 'sqlite3'
 end
 
-gem 'therubyracer'
-
 group :production do
   gem 'pg'
+  gem 'therubyracer-heroku'
 end
 
 gem 'carrierwave'

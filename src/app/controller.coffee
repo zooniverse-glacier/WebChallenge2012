@@ -1,5 +1,5 @@
 class Controller
-  constructor: (@selector, @model)
+  constructor: (@selector, @model) ->
     @el = $(@selector)
     @models = new Array
     @model.on 'fetch-all', (models) =>

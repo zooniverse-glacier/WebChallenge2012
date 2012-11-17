@@ -23,7 +23,7 @@
       return this.id = opts.id;
     };
 
-    Model.prototype.base_url = 'url_here';
+    Model.prototype.base_url = 'pedapi.herokuapp.com';
 
     Model.prototype.trigger = function() {
       var args, event;
@@ -134,7 +134,7 @@
       this.projects = new Array;
     }
 
-    School.prototype.url = 'path to resource here';
+    School.prototype.url = 'schools';
 
     School.prototype.fromJSON = function(data) {
       var key, project, value, _i, _j, _len, _len1, _ref, _results;
@@ -174,7 +174,7 @@
       University.__super__.constructor.call(this, opts);
     }
 
-    University.prototype.url = 'path to resource here';
+    University.prototype.url = 'universities';
 
     return University;
 

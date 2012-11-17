@@ -3,7 +3,7 @@ class School extends window.App.Model
     super opts
     @projects = new Array
 
-  url: 'path to resource here'
+  url: 'schools'
 
   fromJSON: (data) =>
     @[key] = value for key, value in data when key isnt 'projects'

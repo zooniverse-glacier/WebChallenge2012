@@ -2,7 +2,7 @@ class Model
   constrcutor: (opts) ->
     @id = opts.id
 
-  base_url: 'url_here'
+  base_url: 'pedapi.herokuapp.com'
 
   trigger: (event, args...) ->
     $(document).trigger event, args
@@ -17,6 +17,5 @@ class Model
 
   fromJSON: (data) =>
     @[key] = value for key, value in data
-
 
 window.App.Model = Model

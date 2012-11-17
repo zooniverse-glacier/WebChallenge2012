@@ -12,6 +12,13 @@
       <%= event.text_field :amount_raised %>
     </div>
   </div>
+  
+  <div class="control-group">
+    <%= event.label :phase, class: 'control-label' %>
+    <div class="controls">
+      <%= event.select :phase, [1,2,3] %>
+    </div>
+  </div>
 
   <div class="control-group">
     <%= event.label :date, class: 'control-label' %>

@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20121117224332) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.integer  "amount_raised"
+    t.integer  "phase"
   end
 
   create_table "projects", :force => true do |t|

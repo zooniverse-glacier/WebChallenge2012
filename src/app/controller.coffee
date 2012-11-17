@@ -4,15 +4,15 @@ class Controller
     @models = new Object
     @model.on 'fetch-all', (models) =>
       @models[model.name] = model for model in models
+      @startRouting()
     @model.fetchAll()
-    @startRouting()
 
   startRouting: =>
-    window.on 'hashchange', @route
+    $(window).on 'hashchange', @route
     @route()
 
   stopRouting: =>
-    window.off 'hashchange'
+    $(window).off 'hashchange'
 
   route: =>
     @hash = location.hash
@@ -30,7 +30,7 @@ class Controller
 
   renderAll: =>
     @el.append '<ul class="school-list">'
-    @el.append @listTemplate(model) for model in models
+    @el.append @listTemplate(model) for key, model of @models
     @el.append '</ul>'
 
   renderOne: (id) =>

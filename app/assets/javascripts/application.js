@@ -19,14 +19,9 @@
 //= require twitter/bootstrap/bootstrap-modal
 //= require twitter/bootstrap/bootstrap-button
 //= require twitter/bootstrap/bootstrap-collapse
-//= require bootstrap-datepicker
 
 $(function() {
-  $('[data-behaviour~="datepicker"]').on('focus', function(ev) {
-    $(this).datepicker({
-      format: 'yyyy-mm-dd',
-      weekStart: 1,
-      autoclose: true
-    });
+  $('[data-behavior="datepicker"]').datepicker({
+    format: 'yyyy-mm-dd'
   });
 });

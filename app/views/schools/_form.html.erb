@@ -24,15 +24,21 @@
   
   <div class="control-group">
     <%= f.label :timeline_start_at, class: 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :timeline_start_at, html: { 'data-behaviour' => 'datepicker' } %>
+    <div class="controls" >
+      <div class="input-append date" data-date="<%= Time.now.strftime('%Y-%m-%d') %>" data-date-format="yyyy-mm-dd" data-behavior="datepicker">
+        <%= f.text_field :timeline_start_at, class: 'span2' %>
+        <span class="add-on"><i class="icon-th"></i></span>
+      </div>
     </div>
   </div>
   
   <div class="control-group">
     <%= f.label :timeline_end_at, class: 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :timeline_start_at, html: { 'data-behaviour' => 'datepicker' } %>
+    <div class="controls" >
+      <div class="input-append date" data-date="<%= Time.now.strftime('%Y-%m-%d') %>" data-date-format="yyyy-mm-dd" data-behavior="datepicker">
+        <%= f.text_field :timeline_end_at, class: 'span2' %>
+        <span class="add-on"><i class="icon-th"></i></span>
+      </div>
     </div>
   </div>
   

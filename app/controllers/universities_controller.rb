@@ -6,14 +6,14 @@ class UniversitiesController < ApplicationController
   def index
     respond_to do |format|
       format.html{ @universities = University.all }
-      format.json{ respond_with University.for_json.all }
+      format.json{ respond_with University.for_json.all, callback: params[:callback] }
     end
   end
   
   def show
     respond_to do |format|
       format.html{ @university = University.find(params[:id]) }
-      format.json{ respond_with University.for_json.find(params[:id]) }
+      format.json{ respond_with University.for_json.find(params[:id]), callback: params[:callback] }
     end
   end
   

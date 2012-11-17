@@ -1,0 +1,11 @@
+auto: true
+exclude:
+ - .gitignore
+ - .rvmrc
+ - Cakefile
+ - Gemfile
+ - Gemfile.lock
+ - package.json
+ - lib
+ - src
+ - style

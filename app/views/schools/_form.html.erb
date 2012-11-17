@@ -54,26 +54,14 @@
     <%= f.label :Events, class: 'control-label' %>
     
     <div class="controls">
-    <%= f.fields_for :events do |event| %>
-      <div class="well">
-        <div class="control-group">
-          <%= event.label :description, class: 'control-label' %>
-          <div class="controls">
-            <%= event.text_field :description %>
-          </div>
-        </div>
-
-        <div class="control-group">
-          <%= event.label :date, class: 'control-label' %>
-          <div class="controls">
-            <div class="input-append date" data-date="<%= Time.now.strftime('%Y-%m-%d') %>" data-date-format="yyyy-mm-dd" data-behavior="datepicker">
-              <%= event.text_field :date, class: 'span2' %>
-              <span class="add-on"><i class="icon-th"></i></span>
-            </div>
-          </div>
-        </div>
-      </div>  
-    <%- end -%>
+      <div id="event-list">
+        <%= f.fields_for :events do |event| %>
+          <%= render "events", :event => event %>
+        <%- end -%>
+        
+      </div>
+      <%= link_to "Add Another Event", "#add", :id => "add-another-event" %>
+    
     </div>
   </div>
   
@@ -102,5 +90,16 @@
 <script type="text/javascript" charset="utf-8">
   $(function() {
     $('[data-behavior="datepicker"]').datepicker();
+    $('a#add-another-event').click(function() {
+      element_count = $('.school-event').length;
+      var newEvent = $('#event-list div:first').clone();
+      newEvent.find('input').val('');
+      newEvent.find('#school_events_attributes_0_description').attr('name', 'school[events_attributes][' + element_count + '][description]');
+      newEvent.find('#school_events_attributes_0_date').attr('name', 'school[events_attributes][' + element_count + '][date]');
+      newEvent.find('#school_events_attributes_0_id').attr('name', 'school[events_attributes][' + element_count + '][id]');
+      newEvent.appendTo('#event-list');
+      $('#event-list div:last school[events_attributes]')
+      $('[data-behavior="datepicker"]').datepicker();
+    });
   });
 </script>

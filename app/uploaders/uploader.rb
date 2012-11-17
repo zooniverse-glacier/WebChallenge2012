@@ -6,11 +6,11 @@ class Uploader < CarrierWave::Uploader::Base
   end
   
   version :large do
-    process, :resize_to_fit => [490, 350]
+    process :resize_to_fit => [490, 350]
   end
   
   version :school do
-    process, :resize_to_fit => [235, 175]
+    process :resize_to_fit => [235, 175]
   end
   
   version :thumbnail do

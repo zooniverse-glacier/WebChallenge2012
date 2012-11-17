@@ -28,4 +28,13 @@ class Controller
   show: (name) =>
     @renderOne @models[name]
 
+  renderAll: =>
+    @el.append '<ul class="school-list">'
+    @el.append @listTemplate(model) for model in models
+    @el.append '</ul>'
+
+  renderOne: (id) =>
+    model = @model[name]
+    @el.append @itemTemplate(model)
+
 window.App.Controller = Controller

@@ -19,6 +19,14 @@ task 'watch', 'Watch src/ for changes', ->
     invoke 'concat'
     print data.toString()
 
+  invoke 'stylus'
+
+  jekyll = spawn 'jekyll', ['--auto', '--server']
+  jekyll.stderr.on 'data', (data) ->
+    process.stderr.write data.toString()
+  jekyll.stdout.on 'data', (data) ->
+    print data.toString()
+
 task 'concat', 'Concat lib/ into one js file', ->
   destination_dir = __dirname + '/lib/app/'
   singleFile = new String

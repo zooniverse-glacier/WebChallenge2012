@@ -11,7 +11,7 @@ task 'build', 'Build lib/ from src', ->
   coffee.on 'exit', (code) ->
     callback?() if code is 0
 
-task 'watch', 'Watch src/ for changes', ->
+task 'coffee', 'Watch src/ for changes', ->
   coffee_src = spawn 'coffee', ['-w', '-c', '-o', 'lib', 'src']
   coffee_src.stderr.on 'data', (data) ->
     process.stderr.write data.toString()
@@ -19,13 +19,17 @@ task 'watch', 'Watch src/ for changes', ->
     invoke 'concat'
     print data.toString()
 
-  invoke 'stylus'
-
+task 'jekyll', 'Spawn Jekyll Server', ->
   jekyll = spawn 'jekyll', ['--auto', '--server']
   jekyll.stderr.on 'data', (data) ->
     process.stderr.write data.toString()
   jekyll.stdout.on 'data', (data) ->
     print data.toString()
+
+task 'watch', 'Spawn all watchers', ->
+  invoke 'coffee'
+  invoke 'stylus'
+  invoke 'jekyll'
 
 task 'concat', 'Concat lib/ into one js file', ->
   destination_dir = __dirname + '/lib/app/'

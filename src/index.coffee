@@ -4,4 +4,7 @@ $ ->
   map = new window.App.Map 
     element : 'map'
 
-  window.App.MarkFudge.fudge()
+  App.School.fetchAll()
+  App.MarkFudge.fudge()
+
+

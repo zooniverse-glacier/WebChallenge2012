@@ -20,7 +20,7 @@ class University < ActiveRecord::Base
     self.slug = name.parameterize.gsub '-', '_'
   end
   
-  def to_param
+  def to_params
     slug
   end
 end

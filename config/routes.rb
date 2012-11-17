@@ -70,5 +70,5 @@ Pangea::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
   
-  root to: 'sessions#index'
+  root to: 'sessions#new'
 end

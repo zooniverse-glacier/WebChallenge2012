@@ -20,7 +20,7 @@ task 'watch', 'Watch src/ for changes', ->
     print data.toString()
 
 task 'concat', 'Concat lib/ into one js file', ->
-  destination_dir = __dirname + '/lib/app'
+  destination_dir = __dirname + '/lib/app/'
   singleFile = new String
 
   singleFile = fs.readFileSync __dirname + '/lib/index.js'
@@ -44,7 +44,7 @@ task 'concat', 'Concat lib/ into one js file', ->
     data = fs.readFileSync destination_dir + view
     singleFile = singleFile + data
 
-  fs.writeFileSync __dirname + 'javascipts/app.js', singleFile
+  fs.writeFileSync __dirname + '/javascripts/app.js', singleFile
 
 task 'stylus', 'Compile stylus files', ->
   stylus = spawn 'stylus', ['-w', '-c', '-o', 'stylesheets', 'style/index.styl']

@@ -1,5 +1,6 @@
 class SchoolsController < ApplicationController
-  respond_to :html, :json
+  respond_to :html
+  respond_to :json, only: [:index, :show]
   before_filter :login_required, only: [:new, :create, :edit, :update, :destroy]
   
   def index

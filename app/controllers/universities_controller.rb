@@ -1,5 +1,6 @@
 class UniversitiesController < ApplicationController
-  respond_to :html, :json
+  respond_to :html
+  respond_to :json, only: [:index, :show]
   before_filter :login_required, only: [:new, :create, :edit, :update, :destroy]
   
   def index
@@ -28,8 +29,6 @@ class UniversitiesController < ApplicationController
     else
       render :action => 'new'
     end
-    
-    respond_with @university
   end
   
   def edit
@@ -44,14 +43,11 @@ class UniversitiesController < ApplicationController
     else
       render :action => 'edit'
     end
-    
-    respond_with @university
   end
   
   def destroy
     @university = University.find(params[:id])
     @university.destroy
     redirect_to universities_url, :notice => "Successfully destroyed university."
-    respond_with @university
   end
 end

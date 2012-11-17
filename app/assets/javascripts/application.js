@@ -19,9 +19,3 @@
 //= require twitter/bootstrap/bootstrap-modal
 //= require twitter/bootstrap/bootstrap-button
 //= require twitter/bootstrap/bootstrap-collapse
-
-$(function() {
-  $('[data-behavior="datepicker"]').datepicker({
-    format: 'yyyy-mm-dd'
-  });
-});

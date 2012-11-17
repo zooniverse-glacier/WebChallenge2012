@@ -1,5 +1,5 @@
 class SocialNetworks
-  facebookHref: ->
+  @facebookHref: ->
     title = 'Snapshot Serengeti'
     summary = 'I just classified this image on Snapshot Serengeti!'
     image = $("<a href='#{@location.standard[0]}'></a>").get(0).href
@@ -12,11 +12,11 @@ class SocialNetworks
     &p[images][0]=#{image}
     """
 
-  twitterHref: ->
+  @twitterHref: ->
     message = "Classifying animals in the Serengeti! #{@talkHref()} #zooniverse"
     "http://twitter.com/home?status=#{encodeURIComponent message}"
 
-  pinterestHref: ->
+  @pinterestHref: ->
     "http://pinterest.com/pin/create/button/?url=#{@talkHref()}"
 
 window.App.SocialNetworks = SocialNetworks

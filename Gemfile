@@ -8,12 +8,15 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'twitter-bootstrap-rails'
+  gem 'less-rails'
 end
 
 group :development do
   gem 'nifty-generators'
   gem 'pry'
   gem 'sqlite3'
+  gem 'therubyracer'
+  gem 'less-rails'
 end
 
 group :production do
@@ -25,4 +28,3 @@ gem 'cloudinary'
 
 gem "mocha", :group => :test
 gem "bcrypt-ruby", :require => "bcrypt"
-gem 'less-rails'

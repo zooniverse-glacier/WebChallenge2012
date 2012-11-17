@@ -2,7 +2,7 @@ class UploadsController < ApplicationController
   respond_to :html, :json
   
   def index
-    
+    @uploads = Upload.all
   end
   
   def new

@@ -1,1 +1,19 @@
 <% title "Uploads" %>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Description</th>
+    <th>Image</th>
+  </tr>
+  <% for upload in @uploads %>
+    <tr>
+      <td><%= upload.id %></td>
+      <td><%= upload.description %></td>
+      <td><%= image_tag(upload.image.thumbnail.url) %></td>
+      <td><%= link_to "Show", upload %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Upload", new_upload_path %></p>

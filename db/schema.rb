@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121117224332) do
+ActiveRecord::Schema.define(:version => 20121117230517) do
 
   create_table "events", :force => true do |t|
     t.integer  "school_id"
@@ -21,15 +21,6 @@ ActiveRecord::Schema.define(:version => 20121117224332) do
     t.datetime "updated_at",    :null => false
     t.integer  "amount_raised"
     t.integer  "phase"
-  end
-
-  create_table "projects", :force => true do |t|
-    t.integer  "school_id"
-    t.text     "description"
-    t.integer  "cost"
-    t.boolean  "enabled",     :default => false
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
   end
 
   create_table "schools", :force => true do |t|

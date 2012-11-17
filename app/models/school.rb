@@ -6,7 +6,6 @@ class School < ActiveRecord::Base
   validates_presence_of :name
   validates_uniqueness_of :slug
   
-  has_many :projects
   has_many :events
   
   validate :validate_dates
@@ -15,7 +14,7 @@ class School < ActiveRecord::Base
   accepts_nested_attributes_for :events, :allow_destroy => true
   
   def self.for_json
-    includes(:projects).where('enabled = ?', true).order('position asc')
+    includes(:events).where('enabled = ?', true).order('position asc')
   end
   
   def self.list

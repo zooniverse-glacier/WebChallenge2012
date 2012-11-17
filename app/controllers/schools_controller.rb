@@ -6,14 +6,14 @@ class SchoolsController < ApplicationController
   def index
     respond_to do |format|
       format.html{ @schools = School.all }
-      format.json{ respond_with School.for_json.all, include: [:projects, :events], callback: params[:callback] }
+      format.json{ respond_with School.for_json.all, include: :events, callback: params[:callback] }
     end
   end
   
   def show
     respond_to do |format|
       format.html{ @school = School.where('slug = ?', params[:id]).first }
-      format.json{ respond_with School.for_json.where('slug = ?', params[:id]).first, include: [:projects, :events], callback: params[:callback] }
+      format.json{ respond_with School.for_json.where('slug = ?', params[:id]).first, include: :events, callback: params[:callback] }
     end
   end
   

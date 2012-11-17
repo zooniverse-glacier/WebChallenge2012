@@ -8,7 +8,6 @@ Pangea::Application.routes.draw do
   resources :users
   resources :universities
   resources :uploads
-  resources :projects
   resources :schools
   
   root to: 'application#index'

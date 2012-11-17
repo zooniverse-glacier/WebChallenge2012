@@ -44,10 +44,10 @@ task 'concat', 'Concat lib/ into one js file', ->
     data = fs.readFileSync destination_dir + view
     singleFile = singleFile + data
 
-  fs.writeFileSync __dirname + '/javascripts.js', singleFile
+  fs.writeFileSync __dirname + 'javascipts/app.js', singleFile
 
 task 'stylus', 'Compile stylus files', ->
-  stylus = spawn 'stylus', ['-w', '-c', '-o', 'stylesheets', 'styles/index.styl']
+  stylus = spawn 'stylus', ['-w', '-c', '-o', 'stylesheets', 'style/index.styl']
   stylus.stderr.on 'data', (data) ->
     process.stderr.write data.toString()
   stylus.stdout.on 'data', (data) ->

@@ -6,5 +6,4 @@ layout: default
 Hey
 ===
 
-This is great
-
+This is all about us.

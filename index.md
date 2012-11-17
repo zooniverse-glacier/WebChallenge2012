@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Hello world
+title: Home
 ---
 
 This is the home page.

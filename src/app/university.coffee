@@ -1,6 +1,6 @@
 class University extends window.App.Model
-  constructor: (opts) ->
-    super opts
+  constructor: (models=[]) ->
+    super '.universities', window.App.University, models
 
   url: 'universities'
 

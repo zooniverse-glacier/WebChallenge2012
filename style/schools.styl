@@ -1,16 +1,74 @@
-section.schools
-  ul
-    li
-      padding: 24px 0
-      > .content
-        margin-left: 190px
-        h2
-          margin: 0
-          color: #1d0f00
-          font-family: 'Arvo'
-        span.location
-          padding: 0 0 0 14px
-          background: url(../images/green-drop.png) no-repeat center left
-          color: #a5a397
-          font-size: 11px
-          text-transform: uppercase
+.school
+  overflow: hidden;
+
+  .image
+    float: left
+    width: 33%
+
+    figure
+      margin: 0
+      height: 114px
+      overflow: hidden
+      position: relative
+      width: 114px
+
+      .progress
+        border-radius: 50%
+        box-shadow: 0 2px 2px rgba(black, 0.33) inset, 0 1px 0 rgba(white, 0.5)
+        height: 100%
+        left: 0
+        overflow: hidden
+        position: absolute
+        top: 0
+        width: 100%
+
+        &:after
+          content: ""
+          height: 75%
+          position: absolute
+          top: 0
+          width: 50%
+
+        &.one-third
+          background: white
+
+          &:after
+            background: $green
+            left: 50%
+
+        &.two-thirds
+          background: $green
+
+          &:after
+            background: white
+            left: 0
+
+        &.complete
+          background: $green
+
+          &:after
+            background: transparent
+
+      img
+        border-radius: 50%
+        box-shadow: 0 2px 2px rgba(black, 0.33)
+        display: block
+        position: relative
+        margin: 7px
+
+      figcaption
+        color: inherit
+
+  .content
+    float: left;
+    width: 67%
+
+    header
+      .name
+        font: 30px Arvo, serif
+
+      .location
+        color: gray
+
+      a.view
+        background: $green

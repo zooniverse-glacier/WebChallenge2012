@@ -1,9 +1,9 @@
 class SchoolController extends window.App.Controller
-  constructor: ->
-    super '.schools', window.App.School
+  constructor: (models=[]) ->
+    super '.schools', window.App.School, models
 
-  renderAll: =>
+  listTemplate: (model) ->
 
-  renderOne: (id) =>
+  itemTemplate: (model) ->
 
 window.App.SchoolController = SchoolController

@@ -2,8 +2,8 @@ class UniversityController extends window.App.Controller
   constructor: ->
     super '.universities', window.App.University
 
-  renderAll: =>
+  listTemplate: (model) ->
 
-  renderOne: (id) =>
+  itemTemplate: (model) ->
 
 window.App.UniversityController = UniversityController

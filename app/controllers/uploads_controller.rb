@@ -6,12 +6,19 @@ class UploadsController < ApplicationController
   end
   
   def new
-    
+    @upload = Upload.new
   end
   
   def create
-    cloud_image = Cloudinary::Uploader.upload(params[:upload][:image])
+    upload = Upload.new(params[:upload])
+    upload.image = params[:upload][:image]
+    upload.save
     
-    render :text => cloud_image
+    redirect_to upload_path(upload)
+  end
+  
+  def show
+    @upload = Upload.find(params[:id])
+    
   end
 end

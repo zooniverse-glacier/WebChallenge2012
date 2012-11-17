@@ -19,6 +19,7 @@ group :production do
   gem 'pg'
 end
 
+gem 'carrierwave'
 gem 'cloudinary'
 
 gem "mocha", :group => :test

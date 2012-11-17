@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121117170048) do
+ActiveRecord::Schema.define(:version => 20121117180930) do
 
   create_table "projects", :force => true do |t|
     t.integer  "school_id"
@@ -41,6 +41,11 @@ ActiveRecord::Schema.define(:version => 20121117170048) do
     t.datetime "updated_at",                               :null => false
     t.integer  "position",              :default => 0
     t.boolean  "enabled",               :default => false
+  end
+
+  create_table "uploads", :force => true do |t|
+    t.text   "description"
+    t.string "image"
   end
 
   create_table "users", :force => true do |t|

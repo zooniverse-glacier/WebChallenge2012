@@ -1,7 +1,13 @@
 <% title "New Upload" %>
 
-<%= form_tag('/uploads', :method => :post, :multipart => true) do %>
-  <%= file_field "upload", "image" %><br />
+<%= form_for(@upload) do |form| %>
+  <%= form.hidden_field(:image_cache) %>
+  <%= form.label :image %>
+  <%= form.file_field(:image) %>
+  <br />
+  <%= form.label :description %>
+  <%= form.text_field(:description) %>
+  <br />
   <%= submit_tag 'Upload' %>
 <% end %>
 

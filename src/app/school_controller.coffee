@@ -2,8 +2,8 @@ template = (school) -> """
 """
 
 class SchoolController extends window.App.Controller
-  constructor: (models=[]) ->
-    super '.schools', window.App.School, models
+  constructor: () ->
+    super '.schools', window.App.School
 
   listTemplate: (model) ->
 

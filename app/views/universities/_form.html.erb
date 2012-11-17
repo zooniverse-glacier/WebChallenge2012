@@ -9,6 +9,14 @@
   </div>
   
   <div class="control-group">
+    <%= f.label :coordinates, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :lat %>
+      <%= f.text_field :lng %>
+    </div>
+  </div>
+  
+  <div class="control-group">
     <%= f.label :definition_of_service, class: 'control-label' %>
     <div class="controls">
       <%= f.text_area :definition_of_service, rows: 10, cols: 100, style: 'width: 100%' %>

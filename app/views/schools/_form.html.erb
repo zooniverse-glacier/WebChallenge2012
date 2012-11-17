@@ -5,16 +5,16 @@
     <%= f.text_field :name %>
   </p>
   <p>
-    <%= f.label :stage %><br />
-    <%= f.number_field :stage %>
-  </p>
-  <p>
     <%= f.label :story %><br />
     <%= f.text_area :story %>
   </p>
   <p>
     <%= f.label :enabled %><br />
     <%= f.check_box :enabled %>
+  </p>
+  <p>
+    <%= f.label :timeline_start_at %><br />
+    <input type="text" data-behaviour='datepicker'>
   </p>
   <p>
     <%= f.label :position %><br />

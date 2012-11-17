@@ -1,9 +1,7 @@
-<%- if current_user %>
-<nav>
-  <%= link_to 'Universities', universities_path %> |
-  <%= link_to 'Schools', schools_path %> |
-  <%= link_to 'Projects', projects_path %> |
-  <%= link_to 'Uploads', uploads_path %> |
-  <%= link_to 'User', edit_user_path(current_user) %>
-</nav>
-<% end -%>
+<ul class="nav">
+  <li><%= link_to 'Universities', universities_path %></li>
+  <li><%= link_to 'Schools', schools_path %></li>
+  <li><%= link_to 'Projects', projects_path %></li>
+  <li><%= link_to 'Uploads', uploads_path %></li>
+  <li><%= link_to 'User', edit_user_path(current_user) %></li>
+</ul>

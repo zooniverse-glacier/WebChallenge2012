@@ -1,5 +1,5 @@
 class School < ActiveRecord::Base
-  attr_accessible :name, :stage, :story, :enabled, :position
+  attr_accessible :name, :story, :enabled, :timeline_start_at, :position
   
   has_many :projects
   

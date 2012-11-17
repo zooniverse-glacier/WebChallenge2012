@@ -1,19 +1,20 @@
 <% title "Schools" %>
 
-<table>
+<table class="table table-hover table-bordered">
   <tr>
     <th>Name</th>
-    <th>Stage</th>
     <th>Story</th>
     <th>Enabled</th>
+    <th>Timeline Start At</th>
     <th>Position</th>
+    <th colspan="3"></th>
   </tr>
   <% for school in @schools %>
     <tr>
       <td><%= school.name %></td>
-      <td><%= school.stage %></td>
       <td><%= school.story %></td>
       <td><%= school.enabled %></td>
+      <td><%= school.timeline_start_at %></td>
       <td><%= school.position %></td>
       <td><%= link_to "Show", school %></td>
       <td><%= link_to "Edit", edit_school_path(school) %></td>

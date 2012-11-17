@@ -26,7 +26,7 @@
 </p>
 
 <p>
-  <%= link_to "Edit", edit_university_path(@university) %> |
-  <%= link_to "Destroy", @university, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", universities_path %>
+  <%= link_to "Edit", edit_university_path(@university), class: 'btn btn-mini' %>&nbsp;&nbsp;
+  <%= link_to "Destroy", @university, confirm: 'Are you sure?', method: :delete, class: 'btn btn-mini' %>&nbsp;&nbsp;
+  <%= link_to "View All", universities_path, class: 'btn btn-mini' %>
 </p>

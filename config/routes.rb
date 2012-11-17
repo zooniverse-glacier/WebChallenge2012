@@ -7,6 +7,7 @@ Pangea::Application.routes.draw do
   resources :sessions
   resources :users
   resources :universities
+  resources :uploads
   
   root to: 'sessions#new'
 end

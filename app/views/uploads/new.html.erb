@@ -1,0 +1,8 @@
+<% title "New Upload" %>
+
+<%= form_tag('/uploads', :method => :post, :multipart => true) do %>
+  <%= file_field "upload", "image" %><br />
+  <%= submit_tag 'Upload' %>
+<% end %>
+
+<p><%= link_to "Back to List", universities_path %></p>

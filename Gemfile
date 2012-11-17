@@ -12,7 +12,10 @@ end
 
 group :development do
   gem 'nifty-generators'
+  gem 'pry'
 end
+
+gem 'cloudinary'
 
 gem "mocha", :group => :test
 

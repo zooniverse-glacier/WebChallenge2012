@@ -1,6 +1,9 @@
 class School < ActiveRecord::Base
   attr_accessible :name, :story, :enabled, :timeline_start_at, :position, :timeline_end_at, :events_attributes
   
+  validates_presence_of :name
+  validates_presence_of :story
+  
   before_save :validate_dates
   validates_presence_of :name
   
@@ -17,7 +20,12 @@ class School < ActiveRecord::Base
     all.collect{ |s| [s.name, s.id] }
   end
   
+  def before_save
+    self.position ||= School.select('distinct(position)').all.collect(&:position).max + 1
+  end
+  
   def validate_dates
+    return true unless timeline_start_at && timeline_end_at
     unless timeline_start_at < timeline_end_at
       errors.add(:timeline_end_at, "End time cannot be before start time")
       return false

@@ -3,12 +3,14 @@ class School < ActiveRecord::Base
   
   validates_presence_of :name
   validates_presence_of :story
-  
-  before_save :validate_dates
   validates_presence_of :name
+  validates_uniqueness_of :slug
   
   has_many :projects
   has_many :events
+  
+  validate :validate_dates
+  before_save :slugify, :set_position
   
   accepts_nested_attributes_for :events, :allow_destroy => true
   
@@ -20,8 +22,16 @@ class School < ActiveRecord::Base
     all.collect{ |s| [s.name, s.id] }
   end
   
-  def before_save
-    self.position ||= School.select('distinct(position)').all.collect(&:position).max + 1
+  def set_position
+    self.position ||= self.class.select('distinct(position)').all.collect(&:position).max + 1
+  end
+  
+  def slugify
+    self.slug = name.parameterize.gsub '-', '_'
+  end
+  
+  def to_param
+    slug
   end
   
   def validate_dates

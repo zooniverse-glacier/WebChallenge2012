@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121117220111) do
+ActiveRecord::Schema.define(:version => 20121117222139) do
 
   create_table "events", :force => true do |t|
     t.integer  "school_id"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20121117220111) do
     t.datetime "timeline_end_at"
     t.float    "lat"
     t.float    "lng"
+    t.string   "slug"
   end
 
   create_table "universities", :force => true do |t|
@@ -54,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20121117220111) do
     t.boolean  "enabled",               :default => false
     t.float    "lat"
     t.float    "lng"
+    t.string   "slug"
   end
 
   create_table "uploads", :force => true do |t|

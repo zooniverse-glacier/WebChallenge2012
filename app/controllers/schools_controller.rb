@@ -12,8 +12,8 @@ class SchoolsController < ApplicationController
   
   def show
     respond_to do |format|
-      format.html{ @school = School.find(params[:id]) }
-      format.json{ respond_with School.for_json.find(params[:id]), include: [:projects, :events], callback: params[:callback] }
+      format.html{ @school = School.where('slug = ?', params[:id]).first }
+      format.json{ respond_with School.for_json.where('slug = ?', params[:id]).first, include: [:projects, :events], callback: params[:callback] }
     end
   end
   
@@ -32,11 +32,11 @@ class SchoolsController < ApplicationController
   end
   
   def edit
-    @school = School.find(params[:id])
+    @school = School.where('slug = ?', params[:id]).first
   end
   
   def update
-    @school = School.find(params[:id])
+    @school = School.where('slug = ?', params[:id]).first
     if @school.update_attributes(params[:school])
       redirect_to @school, :notice  => "Successfully updated school."
     else
@@ -45,7 +45,7 @@ class SchoolsController < ApplicationController
   end
   
   def destroy
-    @school = School.find(params[:id])
+    @school = School.where('slug = ?', params[:id]).first
     @school.destroy
     redirect_to schools_url, :notice => "Successfully destroyed school."
   end

@@ -12,8 +12,8 @@ class UniversitiesController < ApplicationController
   
   def show
     respond_to do |format|
-      format.html{ @university = University.find(params[:id]) }
-      format.json{ respond_with University.for_json.find(params[:id]), callback: params[:callback] }
+      format.html{ @university = University.where('slug = ?', params[:id]).first }
+      format.json{ respond_with University.for_json.where('slug = ?', params[:id]).first, callback: params[:callback] }
     end
   end
   
@@ -32,12 +32,12 @@ class UniversitiesController < ApplicationController
   end
   
   def edit
-    @university = University.find(params[:id])
+    @university = University.where('slug = ?', params[:id]).first
     respond_with @university
   end
   
   def update
-    @university = University.find(params[:id])
+    @university = University.where('slug = ?', params[:id]).first
     if @university.update_attributes(params[:university])
       redirect_to @university, :notice  => "Successfully updated university."
     else
@@ -46,7 +46,7 @@ class UniversitiesController < ApplicationController
   end
   
   def destroy
-    @university = University.find(params[:id])
+    @university = University.where('slug = ?', params[:id]).first
     @university.destroy
     redirect_to universities_url, :notice => "Successfully destroyed university."
   end

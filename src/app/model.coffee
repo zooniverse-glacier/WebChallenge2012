@@ -31,8 +31,8 @@ class Model
       models.push new @(datum) for datum in data
       @trigger 'fetch-all', models
 
-  @fetchById: ->
-    $.getJSON "https://#{@base_url}/#{@url}.json", (data) ->
+  @fetchById: (id) ->
+    $.getJSON "https://#{@base_url}/#{@url}/#{id}.json", (data) ->
       model = new @(data)
       @trigger 'fetch', model
 

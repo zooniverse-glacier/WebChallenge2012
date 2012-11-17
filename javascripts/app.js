@@ -27,7 +27,7 @@
     Model.prototype.trigger = function() {
       var args, event;
       event = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
-      return $(document).trigger(event, args);
+      return this.constructor.trigger(event(args));
     };
 
     Model.trigger = function() {
@@ -37,7 +37,7 @@
     };
 
     Model.prototype.on = function(event, callback) {
-      return $(document).on(event, callback);
+      return this.constructor.trigger(event(callback));
     };
 
     Model.on = function(event, callback) {
@@ -73,8 +73,8 @@
       });
     };
 
-    Model.fetchById = function() {
-      return $.getJSON("https://" + this.base_url + "/" + this.url + ".json", function(data) {
+    Model.fetchById = function(id) {
+      return $.getJSON("https://" + this.base_url + "/" + this.url + "/" + id + ".json", function(data) {
         var model;
         model = new this(data);
         return this.trigger('fetch', model);

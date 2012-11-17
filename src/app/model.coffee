@@ -6,7 +6,7 @@ class Model
   @base_url: 'pedapi.herokuapp.com'
 
   trigger: (event, args...) ->
-    @constructor.trigger event args
+    @constructor.trigger event, args
 
   @trigger: (event, args...) ->
     $(document).trigger event, args
@@ -15,25 +15,26 @@ class Model
     @constructor.trigger event callback
 
   @on: (event, callback) ->
-    $(document).on event, callback
+    $(document).on event, (event, args...) ->
+      callback args
 
   fetch: =>
-    $.getJSON "https://#{@constructor.base_url}/#{@constructor.url}/#{@id}.json", (data) ->
+    $.getJSON "https://#{@constructor.base_url}/#{@constructor.url}/#{@id}.json?callback=?", (data) =>
       @fromJSON(data)
-    @trigger 'fetch', @
+      @trigger 'fetch', @
 
   fromJSON: (data) =>
-    @[key] = value for key, value in data
+    @[key] = value for key, value of data
 
   @fetchAll: ->
-    $.getJSON "https://#{@base_url}/#{@url}.json", (data) ->
+    $.getJSON "https://#{@base_url}/#{@url}.json?callback=?", (data) =>
       models = new Array
-      models.push new @(datum) for datum in data
+      models.push new @({data: datum}) for datum in data
       @trigger 'fetch-all', models
 
   @fetchById: (id) ->
-    $.getJSON "https://#{@base_url}/#{@url}/#{id}.json", (data) ->
-      model = new @(data)
+    $.getJSON "https://#{@base_url}/#{@url}/#{id}.json?callback=?", (data) ->
+      model = new @({data: data})
       @trigger 'fetch', model
 
 

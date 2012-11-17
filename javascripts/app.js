@@ -35,7 +35,7 @@
     Model.prototype.trigger = function() {
       var args, event;
       event = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
-      return this.constructor.trigger(event(args));
+      return this.constructor.trigger(event, args);
     };
 
     Model.trigger = function() {
@@ -49,42 +49,52 @@
     };
 
     Model.on = function(event, callback) {
-      return $(document).on(event, callback);
+      return $(document).on(event, function() {
+        var args, event;
+        event = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
+        return callback(args);
+      });
     };
 
     Model.prototype.fetch = function() {
-      $.getJSON("https://" + this.constructor.base_url + "/" + this.constructor.url + "/" + this.id + ".json", function(data) {
-        return this.fromJSON(data);
+      var _this = this;
+      return $.getJSON("https://" + this.constructor.base_url + "/" + this.constructor.url + "/" + this.id + ".json?callback=?", function(data) {
+        _this.fromJSON(data);
+        return _this.trigger('fetch', _this);
       });
-      return this.trigger('fetch', this);
     };
 
     Model.prototype.fromJSON = function(data) {
-      var key, value, _i, _len, _results;
+      var key, value, _results;
       _results = [];
-      for (value = _i = 0, _len = data.length; _i < _len; value = ++_i) {
-        key = data[value];
+      for (key in data) {
+        value = data[key];
         _results.push(this[key] = value);
       }
       return _results;
     };
 
     Model.fetchAll = function() {
-      return $.getJSON("https://" + this.base_url + "/" + this.url + ".json", function(data) {
+      var _this = this;
+      return $.getJSON("https://" + this.base_url + "/" + this.url + ".json?callback=?", function(data) {
         var datum, models, _i, _len;
         models = new Array;
         for (_i = 0, _len = data.length; _i < _len; _i++) {
           datum = data[_i];
-          models.push(new this(datum));
+          models.push(new _this({
+            data: datum
+          }));
         }
-        return this.trigger('fetch-all', models);
+        return _this.trigger('fetch-all', models);
       });
     };
 
     Model.fetchById = function(id) {
-      return $.getJSON("https://" + this.base_url + "/" + this.url + "/" + id + ".json", function(data) {
+      return $.getJSON("https://" + this.base_url + "/" + this.url + "/" + id + ".json?callback=?", function(data) {
         var model;
-        model = new this(data);
+        model = new this({
+          data: data
+        });
         return this.trigger('fetch', model);
       });
     };
@@ -221,17 +231,17 @@
     School.url = 'schools';
 
     School.prototype.fromJSON = function(data) {
-      var key, project, value, _i, _j, _len, _len1, _ref, _results;
-      for (value = _i = 0, _len = data.length; _i < _len; value = ++_i) {
-        key = data[value];
+      var key, project, value, _i, _len, _ref, _results;
+      for (key in data) {
+        value = data[key];
         if (key !== 'projects') {
           this[key] = value;
         }
       }
       _ref = data['projects'];
       _results = [];
-      for (_j = 0, _len1 = _ref.length; _j < _len1; _j++) {
-        project = _ref[_j];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        project = _ref[_i];
         _results.push(this.projects.push(new window.App.Project(project)));
       }
       return _results;

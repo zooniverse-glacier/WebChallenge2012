@@ -1,4 +1,4 @@
-class School extends window.App.Model
+class Map extends window.App.Model
   
   constructor: (opts) ->
     super opts
@@ -20,4 +20,4 @@ class School extends window.App.Model
 
 
 
-window.App.School = School
+window.App.Map = Map

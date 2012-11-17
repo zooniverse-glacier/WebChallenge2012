@@ -55,7 +55,7 @@
     
     <div class="controls">
       <div id="event-list">
-        <%- if @school.events.empty? @school.events.build  -%>
+        <%- @school.events.build if @school.events.empty? -%>
         <%= f.fields_for :events do |event| %>
           <%= render "events", :event => event %>
         <%- end -%>

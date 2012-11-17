@@ -1,3 +1,5 @@
+section.home header{background:url("../images/bg-section-header.png") repeat-x center;text-align:center;}
+section.home header h1{display:inline-block;margin:0 auto;padding:0 20px;background:#f7f6f1;color:#142137;font-family:'Open Sans Condensed','Arial';font-size:30px;font-weight:700;line-height:53px;text-transform:uppercase}
 @import url("http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700");
 @import url("http://fonts.googleapis.com/css?family=Arvo");
 button{width:148px;height:28px;border:1px solid #333;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:inset 0 1px 0 rgba(255,255,255,0.5),0 2px 4px rgba(0,0,0,0.3);box-shadow:inset 0 1px 0 rgba(255,255,255,0.5),0 2px 4px rgba(0,0,0,0.3);text-shadow:0 1px 0 rgba(255,255,255,0.3);}

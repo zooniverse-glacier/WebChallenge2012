@@ -31,6 +31,32 @@
   </div>
   
   <div class="control-group">
+    <%= f.label :phases, class: 'control-label' %>
+
+    <div class="controls" >
+      <div class="well">
+        Phase 1 complete: <%= f.check_box :phase_1_complete %><br />
+        Phase 2 complete: <%= f.check_box :phase_2_complete %><br />
+        Phase 3 complete: <%= f.check_box :phase_3_complete %>
+      </div>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :image, class: 'control-label' %>
+
+    <div class="controls" >
+      <div class="well">
+        <%- @uploads.each do |upload| -%>
+          <%= image_tag upload.image.thumbnail.url, :id => "upload-#{upload.id}", :class => "school-image" %>
+        <%- end -%>
+      </div>
+    </div>
+    
+    <%= f.hidden_field :upload_id %>
+  </div>
+  
+  <div class="control-group">
     <%= f.label :timeline_start_at, class: 'control-label' %>
     <div class="controls" >
       <div class="input-append date" data-date="<%= Time.now.strftime('%Y-%m-%d') %>" data-date-format="yyyy-mm-dd" data-behavior="datepicker">
@@ -90,6 +116,12 @@
 
 <script type="text/javascript" charset="utf-8">
   $(function() {
+    $('.school-image').click(function(){
+      $(this).attr('style', 'border: 2px solid red;');
+      image_id = $(this).attr('id').split('-')[1];
+      $('#school_upload_id').val(image_id);
+    });
+    
     $('[data-behavior="datepicker"]').datepicker();
     $('a#add-another-event').click(function() {
       element_count = $('.school-event').length;

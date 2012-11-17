@@ -6,20 +6,21 @@ class SchoolsController < ApplicationController
   def index
     respond_to do |format|
       format.html{ @schools = School.all }
-      format.json{ respond_with School.for_json.all, include: :events, callback: params[:callback] }
+      format.json{ respond_with School.for_json.all, include: :events, methods: [:image_url], callback: params[:callback] }
     end
   end
   
   def show
     respond_to do |format|
       format.html{ @school = School.where('slug = ?', params[:id]).first }
-      format.json{ respond_with School.for_json.where('slug = ?', params[:id]).first, include: :events, callback: params[:callback] }
+      format.json{ respond_with School.for_json.where('slug = ?', params[:id]).first, include: :events, methods: [:image_url], callback: params[:callback] }
     end
   end
   
   def new
     @school = School.new
     @school.events.build
+    @uploads = Upload.limit(10).order('created_at desc')
   end
   
   def create
@@ -33,6 +34,7 @@ class SchoolsController < ApplicationController
   
   def edit
     @school = School.where('slug = ?', params[:id]).first
+    @uploads = Upload.limit(10).order('created_at desc')
   end
   
   def update

@@ -1,5 +1,5 @@
 class School < ActiveRecord::Base
-  attr_accessible :name, :story, :enabled, :timeline_start_at, :position, :timeline_end_at, :events_attributes, :lat, :lng
+  attr_accessible :name, :story, :enabled, :timeline_start_at, :position, :timeline_end_at, :events_attributes, :lat, :lng, :phase_1_complete, :phase_2_complete, :phase_3_complete, :upload_id
   
   validates_presence_of :name
   validates_presence_of :story
@@ -7,6 +7,7 @@ class School < ActiveRecord::Base
   validates_uniqueness_of :slug
   
   has_many :events
+  belongs_to :upload
   
   validate :validate_dates
   before_save :slugify, :set_position
@@ -19,6 +20,14 @@ class School < ActiveRecord::Base
   
   def self.list
     all.collect{ |s| [s.name, s.id] }
+  end
+  
+  def image_url
+    if upload
+      upload.image.school.url
+    else
+      ""
+    end
   end
   
   def set_position

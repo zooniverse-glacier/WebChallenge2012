@@ -7,6 +7,7 @@ group :assets do
   gem 'sass-rails', '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
+  gem 'therubyracer'
   gem 'twitter-bootstrap-rails'
   gem 'less-rails'
 end
@@ -15,7 +16,6 @@ group :development do
   gem 'nifty-generators'
   gem 'pry'
   gem 'sqlite3'
-  gem 'therubyracer'
 end
 
 group :production do

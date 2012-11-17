@@ -1,14 +1,13 @@
 // Here we go
 @import '../node_modules/nib'
 @import 'common'
-@import 'home'
 @import 'schools'
 @import url('http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700')
 @import url('http://fonts.googleapis.com/css?family=Arvo')
 @import "home/section"
 
 button
-  width: 148px
+  width: 150px
   height: 30px
   border: 1px solid rgba(#333, 1)
   border-radius: 3px
@@ -21,6 +20,39 @@ button
     background: #2aa9db
   &.green
     background: #7ed147
+  &.large
+    width: 230px
+    height: 70px
+    border-radius: 40px
+
+section
+  margin: 70px 105px
+  header
+    position: relative
+    font: 30px "Open Sans Condensed", sans-serif
+    text-align: center
+    text-transform: uppercase
+    &:before
+      border-bottom: 1px solid rgba(black, 0.25)
+      border-top: 1px solid white
+      box-shadow: 0 -1px 0 rgba(black, 0.25), 0 1px 0 white
+      content: ""
+      height: 3px
+      left: 0
+      position: absolute
+      top: 20px
+      width: 100%
+
+    > strong
+      background: $bg-color
+      display: inline-block
+      padding: 0 10px;
+      position: relative
+
+  article
+    text-align: center
+    p
+      padding: 30px 0
 
 hr
   height: 0
@@ -31,6 +63,9 @@ ul
   list-style: none
   margin: 0px
   padding: 0px
+
+p
+  margin: 8px 0
 
 a 
   color : white
@@ -47,10 +82,9 @@ body, html
 #content
   background-color: $content-color
   max-width: 1024px 
-  margin: 0px auto 
+  margin: 0 auto 
   width: 90%
-  height: 100%
-  padding: 0px
+  padding: 0 0 50px 0
 
   > header
     width: 100%

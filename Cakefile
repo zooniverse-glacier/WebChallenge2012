@@ -38,6 +38,7 @@ task 'concat', 'Concat lib/ into one js file', ->
   singleFile = fs.readFileSync __dirname + '/lib/index.js'
   singleFile = singleFile + fs.readFileSync __dirname + '/lib/app/events.js'
   singleFile = singleFile + fs.readFileSync __dirname + '/lib/app/model.js'
+  singleFile = singleFile + fs.readFileSync __dirname + '/lib/app/controller.js'
 
   views_func =
     gather_views: (source_dir, working_dir, views) =>

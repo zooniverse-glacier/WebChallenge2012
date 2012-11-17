@@ -4,7 +4,7 @@ class Map
     @el = opts.element
     opts.lat  || = 1.37
     opts.lng  || = 32.29
-    @defaultZoom = opts.zoom || 13
+    @defaultZoom = opts.zoom || 7
     @styleUrl    = opts.styleUrl || "http://{s}.tile.cloudmade.com/703a104d15d44e2885f6cedeaaec6d30/78177/256/{z}/{x}/{y}.png"
     @center  = new L.LatLng(opts.lat, opts.lng)
     @setupMap()
@@ -19,7 +19,6 @@ class Map
       @markerIcon = new L.icon
         iconUrl: "images/map-point.png"
         iconSize: new L.Point(14,16)
-
     else 
       console.log "could not find a map div"
 

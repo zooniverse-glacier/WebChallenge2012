@@ -1,22 +1,9 @@
-class Model
+class Model extends window.App.Events
   constructor: (opts) ->
     @id = opts.id || opts.data.id
     @fromJSON opts.data if opts.data?
 
   @base_url: 'pedapi.herokuapp.com'
-
-  trigger: (event, args...) ->
-    @constructor.trigger event, args
-
-  @trigger: (event, args...) ->
-    $(document).trigger event, args
-
-  on: (event, callback) ->
-    @constructor.trigger event callback
-
-  @on: (event, callback) ->
-    $(document).on event, (event, args...) ->
-      callback args
 
   fetch: =>
     $.getJSON "https://#{@constructor.base_url}/#{@constructor.url}/#{@id}.json?callback=?", (data) =>
@@ -36,6 +23,5 @@ class Model
     $.getJSON "https://#{@base_url}/#{@url}/#{id}.json?callback=?", (data) ->
       model = new @({data: data})
       @trigger 'fetch', model
-
 
 window.App.Model = Model

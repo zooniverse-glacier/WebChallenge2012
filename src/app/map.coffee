@@ -1,7 +1,6 @@
 class Map 
   
   constructor: (opts) ->
-    super opts
     @el = opts.element
     opts.lat  || = 1.37
     opts.lng  || = 32.29
@@ -11,11 +10,14 @@ class Map
     @setupMap()
     
   setupMap: ->
-    @map = L.map @el,
-      zoom: 13
-    @map.setView(@center,@defaultZoom);
-    @mainTileLayer = L.tileLayer @styleUrl
-    @mainTileLayer.addTo(@map)
+    if $("##{@el}").length >0
+      @map = L.map @el,
+        zoom: 13
+      @map.setView(@center,@defaultZoom);
+      @mainTileLayer = L.tileLayer @styleUrl
+      @mainTileLayer.addTo(@map)
+    else 
+      console.log "could not find a map div"
 
 
 window.App.Map = Map

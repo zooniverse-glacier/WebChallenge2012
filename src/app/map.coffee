@@ -1,7 +1,6 @@
 class Map 
   
   constructor: (opts) ->
-    super opts
     @el = opts.element
     opts.lat  || = 1.37
     opts.lng  || = 32.29

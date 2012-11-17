@@ -1,10 +1,10 @@
 class Controller
-  constructor: (@selector, @model) ->
+  constructor: (@selector, @model, @models) ->
     @el = $(@selector)
     @models = new Object
     @model.on 'fetch-all', (models) =>
       @models[model.name] = model for model in models
-    @model.fetchAll()
+    @model.fetchAll() unless @models.length isnt 0
     @startRouting()
 
   startRouting: =>

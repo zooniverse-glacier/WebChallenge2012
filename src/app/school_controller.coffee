@@ -1,6 +1,6 @@
 class SchoolController extends window.App.Controller
-  constructor: ->
-    super '.schools', window.App.School
+  constructor: (models=[]) ->
+    super '.schools', window.App.School, models
 
   listTemplate: (model) ->
 

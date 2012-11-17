@@ -43,6 +43,14 @@
   </div>
   
   <div class="control-group">
+    <%= f.fields_for :events do |event| %>
+      <%= event.label :description %>
+      <%= event.text_field :description %>
+      <%= event.date_select :date %>
+    <%- end -%>
+  </div>
+  
+  <div class="control-group">
     <%= f.label :position, class: 'control-label' %>
     <div class="controls">
       <%= f.number_field :position %>

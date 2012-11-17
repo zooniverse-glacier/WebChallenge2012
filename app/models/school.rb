@@ -2,9 +2,12 @@ class School < ActiveRecord::Base
   attr_accessible :name, :story, :enabled, :timeline_start_at, :position, :timeline_end_at
   
   before_save :validate_dates
+  validates_presence_of :name
   
   has_many :projects
   has_many :events
+  
+  accepts_nested_attributes_for :events, :allow_destroy => true
   
   def self.for_json
     includes(:projects).where('enabled = ?', true).order('position asc')
@@ -16,7 +19,8 @@ class School < ActiveRecord::Base
   
   def validate_dates
     unless timeline_start_at < timeline_end_at
-      return false && errors.add(:timeline_end_at, "End time cannot be before start time")
+      errors.add(:timeline_end_at, "End time cannot be before start time")
+      return false
     end
   end
 end

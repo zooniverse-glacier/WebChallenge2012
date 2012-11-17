@@ -5,6 +5,13 @@
       <%= event.text_field :description, :class => "school-event" %>
     </div>
   </div>
+  
+  <div class="control-group">
+    <%= event.label :amount_raised, class: 'control-label' %>
+    <div class="controls">
+      <%= event.text_field :amount_raised %>
+    </div>
+  </div>
 
   <div class="control-group">
     <%= event.label :date, class: 'control-label' %>

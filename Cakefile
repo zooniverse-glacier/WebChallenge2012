@@ -32,6 +32,7 @@ task 'concat', 'Concat lib/ into one js file', ->
   singleFile = new String
 
   singleFile = fs.readFileSync __dirname + '/lib/index.js'
+  singleFile = singleFile + fs.readFileSync __dirname + '/lib/app/model.js'
 
   views_func =
     gather_views: (source_dir, working_dir, views) =>
@@ -39,7 +40,9 @@ task 'concat', 'Concat lib/ into one js file', ->
 
       entities.forEach (entity) ->
         stats =  fs.statSync(source_dir + working_dir + entity)
-        if stats.isDirectory()
+        if entity is 'model.js'
+          return
+        else if stats.isDirectory()
           views_func.gather_views(source_dir, working_dir + entity + '/', views)
         else
           views.push working_dir + entity

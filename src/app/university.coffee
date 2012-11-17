@@ -4,4 +4,4 @@ class University extends window.App.Model
 
   url: 'path to resource here'
 
-window.App.University = Model
+window.App.University = University

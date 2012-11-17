@@ -9,7 +9,7 @@ class Events
     @constructor.trigger event callback
 
   @on: (event, callback) ->
-    $(document).on event, (event, args...) ->
+    $(document).on event, (event, args) ->
       callback args
 
 window.App.Events = Events

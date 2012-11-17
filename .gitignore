@@ -16,3 +16,5 @@ config/*.yml
 /log/*.log
 /tmp
 .DS_Store
+
+config/*.yml

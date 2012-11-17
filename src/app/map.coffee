@@ -16,8 +16,29 @@ class Map
       @map.setView(@center,@defaultZoom);
       @mainTileLayer = L.tileLayer @styleUrl
       @mainTileLayer.addTo(@map)
+      @markerIcon = new L.icon
+        iconUrl: "images/map-point.png"
+        iconSize: new L.Point(14,16)
+
     else 
       console.log "could not find a map div"
 
+  addSchool:(school)=>
+    console.log(school.location)
+    pos    = new L.LatLng(school.location[0], school.location[1])
+    marker = new L.marker pos,
+      icon : @markerIcon
+
+    marker.bindPopup(@renderPopUp(school))
+    marker.addTo(@map)
+
+  renderPopUp:(school)->
+    template = """
+      <div class='schoolMapDetails'>
+        <img src='#{school.imageUrl}'> </img>
+        <h1>#{school.name}</h1>
+        <p>#{school.description}</p>
+      </div>
+    """
 
 window.App.Map = Map

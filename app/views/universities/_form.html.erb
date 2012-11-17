@@ -1,24 +1,51 @@
-<%= form_for @university do |f| %>
+<%= form_for @university, html: { class: 'form form-horizontal' } do |f| %>
   <%= f.error_messages %>
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :definition_of_service %><br />
-    <%= f.text_area :definition_of_service %>
-  </p>
-  <p>
-    <%= f.label :area_of_service %><br />
-    <%= f.text_field :area_of_service %>
-  </p>
-  <p>
-    <%= f.label :contact %><br />
-    <%= f.text_field :contact %>
-  </p>
-  <p>
-    <%= f.label :enabled %><br />
-    <%= f.check_box :enabled %>
-  </p>
-  <p><%= f.submit class: 'btn btn-primary' %></p>
+  
+  <div class="control-group">
+    <%= f.label :name, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :definition_of_service, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :definition_of_service, rows: 10, cols: 100, style: 'width: 100%' %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :area_of_service, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :area_of_service %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :contact, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :contact %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :enabled, class: 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :enabled %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <div class="controls">
+      <%= f.submit class: 'btn btn-primary' %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <div class="controls">
+      <%= link_to "Show", @university, class: 'btn btn-mini' %>&nbsp;&nbsp;
+      <%= link_to "View All", universities_path, class: 'btn btn-mini' %>
+    </div>
+  </div>
 <% end %>

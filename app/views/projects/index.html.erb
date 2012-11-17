@@ -14,11 +14,11 @@
       <td><%= project.description %></td>
       <td><%= project.cost %></td>
       <td><%= project.enabled %></td>
-      <td><%= link_to "Show", project %></td>
-      <td><%= link_to "Edit", edit_project_path(project) %></td>
-      <td><%= link_to "Destroy", project, :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%= link_to "Show", project, class: 'btn btn-mini' %></td>
+      <td><%= link_to "Edit", edit_project_path(project), class: 'btn btn-mini' %></td>
+      <td><%= link_to "Destroy", project, confirm: 'Are you sure?', method: :delete, class: 'btn btn-mini' %></td>
     </tr>
   <% end %>
 </table>
 
-<p><%= link_to "New Project", new_project_path %></p>
+<p><%= link_to "New Project", new_project_path, class: 'btn btn-primary' %></p>

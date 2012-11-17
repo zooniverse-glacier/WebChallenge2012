@@ -6,6 +6,7 @@
     <th>Story</th>
     <th>Enabled</th>
     <th>Timeline Start At</th>
+    <th>Timeline End At</th>
     <th>Position</th>
     <th colspan="3"></th>
   </tr>
@@ -15,12 +16,13 @@
       <td><%= school.story %></td>
       <td><%= school.enabled %></td>
       <td><%= school.timeline_start_at %></td>
+      <td><%= school.timeline_end_at %></td>
       <td><%= school.position %></td>
-      <td><%= link_to "Show", school %></td>
-      <td><%= link_to "Edit", edit_school_path(school) %></td>
-      <td><%= link_to "Destroy", school, :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%= link_to "Show", school, class: 'btn btn-mini' %></td>
+      <td><%= link_to "Edit", edit_school_path(school), class: 'btn btn-mini' %></td>
+      <td><%= link_to "Destroy", school, confirm: 'Are you sure?', method: :delete, class: 'btn btn-mini' %></td>
     </tr>
   <% end %>
 </table>
 
-<p><%= link_to "New School", new_school_path %></p>
+<p><%= link_to "New School", new_school_path, class: 'btn btn-primary' %></p>

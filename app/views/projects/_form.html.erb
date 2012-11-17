@@ -1,20 +1,44 @@
-<%= form_for @project do |f| %>
+<%= form_for @project, html: { class: 'form form-horizontal' } do |f| %>
   <%= f.error_messages %>
-  <p>
-    <%= f.label :school_id %><br />
-    <%= select :project, :school_id, School.list %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </p>
-  <p>
-    <%= f.label :cost %><br />
-    <%= f.number_field :cost %>
-  </p>
-  <p>
-    <%= f.label :enabled %><br />
-    <%= f.check_box :enabled %>
-  </p>
-  <p><%= f.submit %></p>
+  
+  <div class="control-group">
+    <%= f.label :school_id, class: 'control-label' %>
+    <div class="controls">
+      <%= select :project, :school_id, School.list %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :description, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :description, rows: 10, cols: 100, style: 'width: 100%' %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :cost, class: 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :cost %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :enabled, class: 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :enabled %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <div class="controls">
+      <%= f.submit class: 'btn btn-primary' %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <div class="controls">
+      <%= link_to "Show", @project, class: 'btn btn-mini' %>&nbsp;&nbsp;
+      <%= link_to "View All", projects_path, class: 'btn btn-mini' %>
+    </div>
+  </div>
 <% end %>

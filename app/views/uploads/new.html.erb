@@ -1,14 +1,27 @@
 <% title "New Upload" %>
 
-<%= form_for(@upload) do |form| %>
+<%= form_for @upload, html: { class: 'form form-horizontal' } do |form| %>
   <%= form.hidden_field(:image_cache) %>
-  <%= form.label :image %>
-  <%= form.file_field(:image) %>
-  <br />
-  <%= form.label :description %>
-  <%= form.text_field(:description) %>
-  <br />
-  <%= submit_tag 'Upload' %>
+  
+  <div class="control-group">
+    <%= form.label :image, class: 'control-label' %>
+    <div class="controls">
+      <%= form.file_field(:image) %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= form.label :description, class: 'control-label' %>
+    <div class="controls">
+      <%= form.text_field(:description) %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <div class="controls">
+      <%= submit_tag 'Upload', class: 'btn btn-primary' %>
+    </div>
+  </div>
 <% end %>
 
 <p><%= link_to "Back to List", universities_path %></p>

@@ -18,7 +18,7 @@
 </p>
 
 <p>
-  <%= link_to "Edit", edit_project_path(@project) %> |
-  <%= link_to "Destroy", @project, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", projects_path %>
+  <%= link_to "Edit", edit_project_path(@project), class: 'btn btn-mini' %>
+  <%= link_to "Destroy", @project, confirm: 'Are you sure?', method: :delete, class: 'btn btn-mini' %>
+  <%= link_to "View All", projects_path, class: 'btn btn-mini' %>
 </p>

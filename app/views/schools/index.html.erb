@@ -1,0 +1,25 @@
+<% title "Schools" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Stage</th>
+    <th>Story</th>
+    <th>Enabled</th>
+    <th>Position</th>
+  </tr>
+  <% for school in @schools %>
+    <tr>
+      <td><%= school.name %></td>
+      <td><%= school.stage %></td>
+      <td><%= school.story %></td>
+      <td><%= school.enabled %></td>
+      <td><%= school.position %></td>
+      <td><%= link_to "Show", school %></td>
+      <td><%= link_to "Edit", edit_school_path(school) %></td>
+      <td><%= link_to "Destroy", school, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New School", new_school_path %></p>

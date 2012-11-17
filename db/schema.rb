@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121117162610) do
+ActiveRecord::Schema.define(:version => 20121117165419) do
+
+  create_table "schools", :force => true do |t|
+    t.string   "name"
+    t.integer  "stage",      :default => 1
+    t.text     "story"
+    t.boolean  "enabled",    :default => false
+    t.integer  "position",   :default => 0
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
 
   create_table "universities", :force => true do |t|
     t.string   "name"

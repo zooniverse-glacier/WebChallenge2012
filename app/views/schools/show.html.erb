@@ -1,0 +1,28 @@
+<% title "School" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @school.name %>
+</p>
+<p>
+  <strong>Stage:</strong>
+  <%= @school.stage %>
+</p>
+<p>
+  <strong>Story:</strong>
+  <%= @school.story %>
+</p>
+<p>
+  <strong>Enabled:</strong>
+  <%= @school.enabled %>
+</p>
+<p>
+  <strong>Position:</strong>
+  <%= @school.position %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_school_path(@school) %> |
+  <%= link_to "Destroy", @school, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", schools_path %>
+</p>

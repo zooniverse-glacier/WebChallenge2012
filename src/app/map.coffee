@@ -2,21 +2,20 @@ class Map extends window.App.Model
   
   constructor: (opts) ->
     super opts
-    @el = $(opts.element)
+    @el = opts.element
     opts.lat  || = 1.37
     opts.lng  || = 32.29
     @defaultZoom = opts.zoom || 13
     @styleUrl    = opts.styleUrl || "http://{s}.tile.cloudmade.com/703a104d15d44e2885f6cedeaaec6d30/78177/256/{z}/{x}/{y}.png"
-    @center  = L.LatLng(opts.lat, opts.lng)
+    @center  = new L.LatLng(opts.lat, opts.lng)
     @setupMap()
     
   setupMap: ->
-    @map = L.map @el.attr('id')  
-      center: [51.505, -0.09],
+    @map = L.map @el,
       zoom: 13
-    @map.setView()
+    @map.setView(@center,@defaultZoom);
     @mainTileLayer = L.tileLayer @styleUrl
-    @map.addTo(@map)
+    @mainTileLayer.addTo(@map)
 
 
 

@@ -2,6 +2,6 @@ class University extends window.App.Model
   constructor: (opts) ->
     super opts
 
-  url: 'url'
+  url: 'path to resource here'
 
 window.App.University = Model

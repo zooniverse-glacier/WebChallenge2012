@@ -13,5 +13,5 @@ Pangea::Application.routes.draw do
   resources :universities
   resources :uploads
   
-  root to: 'sessions#new'
+  root to: 'application#index'
 end

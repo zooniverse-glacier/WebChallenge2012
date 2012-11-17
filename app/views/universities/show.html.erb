@@ -1,0 +1,24 @@
+<% title "University" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @university.name %>
+</p>
+<p>
+  <strong>Definition Of Service:</strong>
+  <%= @university.definition_of_service %>
+</p>
+<p>
+  <strong>Area Of Service:</strong>
+  <%= @university.area_of_service %>
+</p>
+<p>
+  <strong>Contact:</strong>
+  <%= @university.contact %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_university_path(@university) %> |
+  <%= link_to "Destroy", @university, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", universities_path %>
+</p>

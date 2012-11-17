@@ -1,0 +1,23 @@
+<% title "Universities" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Definition Of Service</th>
+    <th>Area Of Service</th>
+    <th>Contact</th>
+  </tr>
+  <% for university in @universities %>
+    <tr>
+      <td><%= university.name %></td>
+      <td><%= university.definition_of_service %></td>
+      <td><%= university.area_of_service %></td>
+      <td><%= university.contact %></td>
+      <td><%= link_to "Show", university %></td>
+      <td><%= link_to "Edit", edit_university_path(university) %></td>
+      <td><%= link_to "Destroy", university, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New University", new_university_path %></p>

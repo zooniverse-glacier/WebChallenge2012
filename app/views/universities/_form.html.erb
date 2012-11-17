@@ -1,0 +1,20 @@
+<%= form_for @university do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :definition_of_service %><br />
+    <%= f.text_area :definition_of_service %>
+  </p>
+  <p>
+    <%= f.label :area_of_service %><br />
+    <%= f.text_field :area_of_service %>
+  </p>
+  <p>
+    <%= f.label :contact %><br />
+    <%= f.text_field :contact %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

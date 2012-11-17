@@ -6,6 +6,8 @@
     <th>Definition Of Service</th>
     <th>Area Of Service</th>
     <th>Contact</th>
+    <th>Enabled</th>
+    <th>Position</th>
   </tr>
   <% for university in @universities %>
     <tr>
@@ -13,6 +15,8 @@
       <td><%= university.definition_of_service %></td>
       <td><%= university.area_of_service %></td>
       <td><%= university.contact %></td>
+      <td><%= university.enabled %></td>
+      <td><%= university.position %></td>
       <td><%= link_to "Show", university %></td>
       <td><%= link_to "Edit", edit_university_path(university) %></td>
       <td><%= link_to "Destroy", university, :confirm => 'Are you sure?', :method => :delete %></td>

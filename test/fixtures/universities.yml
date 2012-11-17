@@ -3,9 +3,13 @@ one:
   definition_of_service: MyText
   area_of_service: MyString
   contact: MyString
+  enabled: false
+  position: 1
 
 two:
   name: MyString
   definition_of_service: MyText
   area_of_service: MyString
   contact: MyString
+  enabled: false
+  position: 1

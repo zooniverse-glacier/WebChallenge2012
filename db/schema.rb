@@ -11,15 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121117160010) do
+ActiveRecord::Schema.define(:version => 20121117162610) do
 
   create_table "universities", :force => true do |t|
     t.string   "name"
     t.text     "definition_of_service"
     t.string   "area_of_service"
     t.string   "contact"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+    t.integer  "position"
+    t.boolean  "enabled",               :default => false
   end
 
   create_table "users", :force => true do |t|

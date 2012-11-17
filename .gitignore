@@ -3,3 +3,4 @@ _site/
 lib/
 javascripts/app.js
 stylesheets/index.css
+.DS_Store

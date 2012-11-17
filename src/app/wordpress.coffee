@@ -1,4 +1,4 @@
-class Map 
+class Wordpress extends window.App.Model
   
   constructor: (opts) ->
     super opts
@@ -17,5 +17,7 @@ class Map
     @mainTileLayer = L.tileLayer @styleUrl
     @mainTileLayer.addTo(@map)
 
+  
 
-window.App.Map = Map
+
+window.App.Wordpress = Wordpress

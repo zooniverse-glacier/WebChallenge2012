@@ -1,0 +1,10 @@
+{
+  "name": "zooniverse-owc-2012",
+  "version": "0.0.1",
+
+  "dependencies": {
+    "coffee-script": "1.4.x",
+    "stylus": "0.30.x",
+    "nib": "0.8.x"
+  }
+}

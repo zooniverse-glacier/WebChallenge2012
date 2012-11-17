@@ -16,7 +16,6 @@ group :development do
   gem 'pry'
   gem 'sqlite3'
   gem 'therubyracer'
-  gem 'less-rails'
 end
 
 group :production do

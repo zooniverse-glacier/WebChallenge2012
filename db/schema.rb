@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(:version => 20121117162610) do
     t.string   "contact"
     t.datetime "created_at",                               :null => false
     t.datetime "updated_at",                               :null => false
-    t.integer  "position"
+    t.integer  "position",              :default => 0
     t.boolean  "enabled",               :default => false
   end
 

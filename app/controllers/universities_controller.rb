@@ -3,13 +3,17 @@ class UniversitiesController < ApplicationController
   before_filter :login_required, only: [:new, :create, :edit, :update, :destroy]
   
   def index
-    @universities = University.all
-    respond_with @universities
+    respond_to do |format|
+      format.html{ @universities = University.all }
+      format.json{ respond_with University.for_json.all }
+    end
   end
   
   def show
-    @university = University.find(params[:id])
-    respond_with @university
+    respond_to do |format|
+      format.html{ @university = University.find(params[:id]) }
+      format.json{ respond_with University.for_json.find(params[:id]) }
+    end
   end
   
   def new

@@ -6,5 +6,6 @@ exclude:
  - Gemfile
  - Gemfile.lock
  - package.json
- - *.coffee
- - *.styl
+ - lib
+ - src
+ - style

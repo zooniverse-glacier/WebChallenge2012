@@ -1,0 +1,13 @@
+one:
+  name: MyString
+  stage: 1
+  story: MyText
+  enabled: false
+  position: 1
+
+two:
+  name: MyString
+  stage: 1
+  story: MyText
+  enabled: false
+  position: 1

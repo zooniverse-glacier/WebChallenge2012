@@ -20,6 +20,6 @@ class WordpressFeed extends window.App.Events
     @content = entry.content
     @date = new Date entry.publishedDate
     @linkText = "PLACEHOLDER"
-    @image = "http://placehold.it/1040x400"
+    @image = "http://placehold.it/1000x400"
 
 window.App.WordpressFeed = WordpressFeed

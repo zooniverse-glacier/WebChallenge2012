@@ -19,7 +19,6 @@ class SchoolController extends window.App.Controller
     @startList @models
 
   listTemplate: (model) ->
-    $('.project-list.universities').hide()
     progress = 'begin'
     progress_text = ''
 
@@ -55,6 +54,7 @@ class SchoolController extends window.App.Controller
     """
 
   itemTemplate: (model) ->
+    $('.project-list.universities').hide()
     progress = 'begin'
     progress_text = ''
 

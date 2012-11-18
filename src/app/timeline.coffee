@@ -12,7 +12,6 @@ class Timeline
     @el = $(el)
     @width = width
     @startTime = moment(school.events[0].date).subtract('days',20)
-    console.log @startTime , moment(school.events[0].date)
     @endTime = moment(school.events[school.events.length-1].date).add('days',20)
     @totalDays = moment(@startTime).diff(@endTime, 'days')
     @render()

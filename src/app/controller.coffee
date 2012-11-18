@@ -3,7 +3,10 @@ class Controller
     @el = $(@selector)
     @models = new Object
     @model.on 'fetch-all' + @model.url, (models) =>
-      @models[model.slug] = model for model in models
+      if models[0].slug
+        @models[model.slug] = model for model in models
+      else
+        @models[model.name] = model for model in models
       @startRouting()
     @model.fetchAll()
 

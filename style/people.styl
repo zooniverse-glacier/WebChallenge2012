@@ -1,0 +1,32 @@
+.people
+  clearfix()
+  .person
+    position: relative
+    float: left
+    margin: 8px
+    background-color: $dark-blue
+    box-shadow: 0 0 4px rgba(0,0,0,0.15)
+    &:first-child
+      margin-left: 0
+    &:nth-child(3n)
+      margin-right: 0
+    &:nth-child(3n+1)
+      margin-left: 0
+    .image
+      border: 3px solid #fff
+
+    .popup
+      display: none
+      position: absolute
+      top: -20px
+      left: 40%
+      width: 260px
+      height: 225px
+      padding: 10px 14px
+      z-index: 1
+      background: rgba(#fff, 0.9)
+      border-radius: 10px
+      font-size: 12px
+      line-height: 1.3em
+      span
+        display: block

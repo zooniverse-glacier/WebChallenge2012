@@ -68,7 +68,6 @@ class SchoolController extends window.App.Controller
     progress = 'begin'
     progress_text = ''
 
-    console.log model
     if model.phase_1_complete
       progress = 'one-third'
       progress_text = 'Phase 1: Complete'

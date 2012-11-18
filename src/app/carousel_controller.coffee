@@ -9,7 +9,7 @@ class CarouselController
     window.App.WordpressFeed.on 'feed-loaded', (feed) =>
       @feed = feed
       @render()
-    window.App.WordpressFeed.fetch 4, 'blog'
+    window.App.WordpressFeed.fetch 4, 'events'
 
   template: (feedItem) =>
     @count += 1

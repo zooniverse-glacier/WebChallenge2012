@@ -51,7 +51,7 @@ class CarouselController
   goToNext: =>
     @el.removeClass @countArray[@item]
     if @forward
-      if @item < 3
+      if @item < 1
         @item += 1
       else
         @forward = false

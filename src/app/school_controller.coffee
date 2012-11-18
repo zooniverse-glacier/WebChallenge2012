@@ -18,6 +18,12 @@ class SchoolController extends window.App.Controller
     @el.prepend header
     @startList @models
 
+  donationsTemplate:(model)->
+    result= ""
+    for donationType in model.donations 
+      result = result + "<p class='donationType'> <img src='images/donationTypeImages/#{App.School.imageForDonationType donationType}.png'></img> <br />#{donationType} </p>"
+    result
+
   listTemplate: (model) ->
     progress = 'begin'
     progress_text = ''
@@ -47,7 +53,7 @@ class SchoolController extends window.App.Controller
             <div class="location">Kampala, Uganda</div>
           </header>
           <p>#{model.story}</p>
-          <p class='schoolClassStats'>
+
           <div class='storyButtons'>
               <p><a href="#/#{model.slug}" class="standard-button green">View site</a></p>
               <p class='social'><a style='color:black' target='_blank' href="#{App.SocialNetworks.twitterHref model.name, window.location+'#'+model.slug}"><i class='icon-twitter'> </i></a></p>
@@ -88,6 +94,13 @@ class SchoolController extends window.App.Controller
             <div class="location">Kampala, Uganda</div>
           </header>
           <p>#{model.story}</p>
+          <div class='requiredDonations'>
+            <p class='schoolClassStats'>Teachers: #{model["Teachers"] || 'unknown' } Students: #{model["Students"] || 'unknown' } </p>
+            <p style='font-size:15px'>Donations Required</p>
+            #{@donationsTemplate model}
+            <div class="column"><p><a href="donateGift" class="orange standard-button">Give a gift</a></p></div>
+
+          </div>
            <div class='storyButtons'>
               <p class='social'><a target='_blank' href="#{App.SocialNetworks.twitterHref model.name, window.location}"><i class='icon-twitter'> </i></a></p>
               <p class='social'><a target='_blank' href="#{App.SocialNetworks.twitterHref model.name, model.slug}"><i class='icon-facebook-squared'> </i></a></p>

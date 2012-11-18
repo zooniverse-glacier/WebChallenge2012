@@ -15,7 +15,7 @@ class CarouselController
     @count += 1
     """
       <div class="carousel-item #{@countArray[@count]}">
-        <img src="#{feedItem.image}" width="1024" height="400" alt="#{feedItem.description}" />
+        <img src="#{feedItem.image}" width="1000" height="400" alt="#{feedItem.description}" />
         <div class="carousel-details">
           <h2 class="carousel-title">#{feedItem.title}</h2>
           <p class="carousel-description">#{feedItem.description}</p>

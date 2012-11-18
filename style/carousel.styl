@@ -1,12 +1,13 @@
-$carousel-width = 1024px
+$carousel-width = 100%
 
-.carousel
+#content > section.carousel
   height: 430px
   width: $carousel-width
   overflow: hidden
   position: relative
   border-bottom: 1px solid #cecdc5
   box-shadow: 0px 1px 0px #fff
+  margin: 0
 
   &.first
     .carousel-item
@@ -62,6 +63,10 @@ $carousel-width = 1024px
         margin-bottom: 10px
 
       a
+        @extends .standard-button
+        background: $green
+
+      input
         @extends .standard-button
 
   .carousel-controls

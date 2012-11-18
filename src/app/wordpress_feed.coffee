@@ -14,13 +14,16 @@ class WordpressFeed extends window.App.Events
         @trigger "feed-loaded:#{feed}", feedEntries
 
   constructor: (entry) ->
-    console.log entry
     @title = entry.title
     @url = entry.link
     @description = entry.contentSnippet
     @content = entry.content
     @date = new Date entry.publishedDate
     @linkText = "Learn More"
-    @image = entry.mediaGroups[0].contents[1]?.url.split('?')[0] + "?w=1000" || "http://placehold.it/1000x400"
+
+    unless entry.mediaGroups[0].contents[1]?.url.split('?')[0]
+      @image = 'images/carousel.jpg'
+    else
+      @image = entry.mediaGroups[0].contents[1]?.url.split('?')[0] + "?w=1000" || "http://placehold.it/1000x400"
 
 window.App.WordpressFeed = WordpressFeed

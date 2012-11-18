@@ -28,7 +28,7 @@ class Controller
     header = 
       """
       <section class="normal">
-        <h1><strong>Our Schools</strong></h1>
+        <h1><strong>Uganda</strong></h1>
       </section>
       """
 

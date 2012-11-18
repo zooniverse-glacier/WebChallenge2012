@@ -5,17 +5,23 @@ layout: default
 
 {% for page in site.pages %}
   {% if page.contentTag == "homeSection" %}
-    <section class="home-section">
-      <header><strong>{{ page.title }}</strong></header>
+    <section>
+      <h2><strong>{{ page.title }}</strong></h2>
 
-      {% if page.photo %}
-      <figure>
-        <img src="{{ page.photo }}" />
-      </figure>
-      {% endif %}
+      <div class="two columns">
+        <div class="narrow column">
+          {% if page.photo %}
+            <figure>
+              <img src="{{ page.photo }}" />
+            </figure>
+          {% endif %}
+        </div>
 
-      <div class="content markdownSection">
-        {{ page.content }}
+        <div class="wide column">
+          <div class="content markdownSection">
+            {{ page.content }}
+          </div>
+        </div>
       </div>
     </section>
   {% endif %}

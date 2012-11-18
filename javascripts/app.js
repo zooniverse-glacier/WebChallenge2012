@@ -4,7 +4,7 @@
   window.App = {};
 
   $(function() {
-    var boardContoller, el, imageCarousel, schoolController, teamController, universityController, _i, _len, _ref, _results;
+    var boardContoller, el, imageCarousel, powerfulController, schoolController, teamController, universityController, _i, _len, _ref, _results;
     if (location.pathname === '/schools.html') {
       schoolController = new App.SchoolController();
       universityController = new App.UniversityController();
@@ -13,6 +13,8 @@
     } else if (location.pathname === '/about.html') {
       boardContoller = new App.PeopleController('board');
       teamController = new App.PeopleController('team');
+    } else if (location.pathname === '/programs.html') {
+      powerfulController = new App.PowerfulController();
     }
     _ref = $('.countdown');
     _results = [];
@@ -170,10 +172,17 @@
       this.el = $(this.selector);
       this.models = new Object;
       this.model.on('fetch-all' + this.model.url, function(models) {
-        var _i, _len;
-        for (_i = 0, _len = models.length; _i < _len; _i++) {
-          model = models[_i];
-          _this.models[model.slug] = model;
+        var _i, _j, _len, _len1;
+        if (models[0].slug) {
+          for (_i = 0, _len = models.length; _i < _len; _i++) {
+            model = models[_i];
+            _this.models[model.slug] = model;
+          }
+        } else {
+          for (_j = 0, _len1 = models.length; _j < _len1; _j++) {
+            model = models[_j];
+            _this.models[model.name] = model;
+          }
         }
         return _this.startRouting();
       });
@@ -271,16 +280,11 @@
 
     CarouselController.prototype.template = function(feedItem) {
       this.count += 1;
-      return "<div class=\"carousel-item " + this.countArray[this.count] + "\">\n  <img src=\"" + feedItem.image + "\" alt=\"" + feedItem.description + "\" />\n  <div class=\"carousel-details\">\n    <h2 class=\"carousel-title\">" + feedItem.title + "</h2>\n    <p class=\"carousel-description\">" + feedItem.description + "</p>\n    <a href=\"" + feedItem.url + " class=\"carousel-link\">" + feedItem.linkText + "</a>\n  </div>\n</div>";
+      return "<div class=\"carousel-item " + this.countArray[this.count] + "\">\n  <img src=\"" + feedItem.image + "\" alt=\"" + feedItem.description + "\" />\n  <div class=\"carousel-details\">\n    <h2 class=\"carousel-title\">" + feedItem.title + "</h2>\n    <p class=\"carousel-description\">" + feedItem.description + "</p>\n    <a href=\"" + feedItem.url + "\" class=\"carousel-link\">" + feedItem.linkText + "</a>\n  </div>\n</div>";
     };
 
     CarouselController.prototype.controls = function() {
-      var num, radios, _i;
-      radios = new String;
-      for (num = _i = 0; _i <= 3; num = ++_i) {
-        radios = radios + ("<input type=\"radio\" name=\"carousel\" value=\"" + num + "\">");
-      }
-      return '<div class="carousel-controls">' + radios + "</div>";
+      return "<div class=\"carousel-controls\">\n  <img class=\"front\" src=\"/images/front-piece.png\" />\n  <img class=\"back\" src=\"/images/back-piece.png\" />\n  <div id=\"first\" data-id=\"0\" class=\"circle\"></div>\n  <div id=\"second\" data-id=\"1\" class=\"circle\"></div>\n  <div id=\"third\" data-id=\"2\" class=\"circle\"></div>\n  <div id=\"fourth\" data-id=\"3\" class=\"circle\"></div>\n</div>";
     };
 
     CarouselController.prototype.render = function() {
@@ -291,15 +295,14 @@
         this.el.append(this.template(item));
       }
       this.el.append(this.controls());
-      this.el.find("input[value=\"" + this.item + "\"]").prop('checked', true);
-      this.el.find('input[name="carousel"]').on('click', this.goToItem);
+      this.el.find('.circle').on('click', this.goToItem);
       return this.timerId = setInterval(this.goToNext, 10000);
     };
 
     CarouselController.prototype.goToItem = function(e) {
       clearInterval(this.timerId);
       this.el.removeClass(this.countArray[this.item]);
-      this.item = e.currentTarget.value;
+      this.item = $(e.currentTarget).attr('data-id');
       return this.el.addClass(this.countArray[this.item]);
     };
 
@@ -320,7 +323,6 @@
           this.item += 1;
         }
       }
-      this.el.find("input[value=\"" + this.item + "\"]").prop('checked', true);
       return this.el.addClass(this.countArray[this.item]);
     };
 
@@ -359,10 +361,17 @@
       this.el = $(this.selector);
       this.models = new Object;
       this.model.on('fetch-all' + this.model.url, function(models) {
-        var _i, _len;
-        for (_i = 0, _len = models.length; _i < _len; _i++) {
-          model = models[_i];
-          _this.models[model.slug] = model;
+        var _i, _j, _len, _len1;
+        if (models[0].slug) {
+          for (_i = 0, _len = models.length; _i < _len; _i++) {
+            model = models[_i];
+            _this.models[model.slug] = model;
+          }
+        } else {
+          for (_j = 0, _len1 = models.length; _j < _len1; _j++) {
+            model = models[_j];
+            _this.models[model.name] = model;
+          }
         }
         return _this.startRouting();
       });
@@ -669,23 +678,36 @@
       this.renderAll = __bind(this.renderAll, this);
 
       PeopleController.__super__.constructor.call(this, "." + this.personType, window.App.Person);
+      this.run = false;
     }
 
     PeopleController.prototype.renderAll = function() {
       var key, model, roles, _ref, _ref1;
-      roles = this.personType === 'board' ? ['board_member'] : ['team', 'director', 'intern'];
-      _ref = this.models;
-      for (key in _ref) {
-        model = _ref[key];
-        if (_ref1 = model.role, __indexOf.call(roles, _ref1) >= 0) {
-          this.el.append(this.listTemplate(model));
+      if (!this.run) {
+        this.run = true;
+        roles = this.personType === 'board' ? ['board_member'] : ['team', 'director', 'intern'];
+        _ref = this.models;
+        for (key in _ref) {
+          model = _ref[key];
+          if (_ref1 = model.role, __indexOf.call(roles, _ref1) >= 0) {
+            this.el.append(this.listTemplate(model));
+          }
         }
+        return this.startList();
       }
-      return this.startList();
     };
 
     PeopleController.prototype.listTemplate = function(model) {
-      return "<section class=\"board normal\">\n  <img src=\"" + model.image + " || '//placehold.it/235x160.png'}\" width=\"235\" height=\"160\" />\n  <div class=\"popup\">\n    <span class=\"name\">" + model.name + "</span>\n    <span class=\"email\">" + model.email + "</span>\n    <span class=\"bio\">" + model.bio + "</span>\n  </div>\n</section>";
+      return "<div class=\"person\">\n  <div class=\"image\" style=\"width: 225px; height: 160px; background-repeat: no-repeat; background-position: center; background-image: url(" + (model.image_url || '//placehold.it/235x160.png') + ")\"></div>\n  <div class=\"popup\">\n    <span class=\"name\"><h4>" + model.name + "</h4></span>\n    <span class=\"email\"><a href=\"" + model.email + "\">" + model.email + "</a></span>\n    <span class=\"bio\">" + model.bio + "</span>\n  </div>\n</div>";
+    };
+
+    PeopleController.prototype.startList = function() {
+      console.log($('.person'));
+      return $('.person').hover(function() {
+        return $(this).find('.popup').show();
+      }, function() {
+        return $(this).find('.popup').hide();
+      });
     };
 
     return PeopleController;
@@ -726,20 +748,33 @@
   PowerfulController = (function() {
 
     function PowerfulController() {
+      this.render = __bind(this.render, this);
+
       this.template = __bind(this.template, this);
 
       var _this = this;
-      this.el = $('.powerful');
+      this.el = $('#powerful');
       window.App.WordpressFeed.on('feed-loaded:powerful', function(feed) {
         _this.feed = feed;
         return _this.render();
       });
       window.App.WordpressFeed.fetch(10, 'powerful');
+      console.log('feed');
     }
 
     PowerfulController.prototype.template = function(feedItem) {
-      this.count += 1;
-      return "<div class=\"two columns\">\n  <div class=\"narrow column\">\n    <figure>\n      <img src=\"" + feedItem.image + "\" />\n    </figure>\n  </div>\n<div class=\"wide column\">";
+      return "<div class=\"two columns\">\n  <div class=\"narrow column\">\n    <figure>\n      <img src=\"" + feedItem.image + "\" />\n    </figure>\n  </div>\n  \n<div class=\"wide column\">\n  <h4>" + feedItem.title + "</h4>\n  <p>" + feedItem.description + " <a href=\"" + feedItem.url + "\">" + feedItem.linkText + "</a></p>\n</div>";
+    };
+
+    PowerfulController.prototype.render = function() {
+      var item, _i, _len, _ref, _results;
+      _ref = this.feed;
+      _results = [];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        item = _ref[_i];
+        _results.push(this.el.append(this.template(item)));
+      }
+      return _results;
     };
 
     return PowerfulController;
@@ -1174,7 +1209,8 @@
     };
 
     UniversityController.prototype.listTemplate = function(model) {
-      return "<section class=\"school normal\">\n  <div class=\"image\">\n    <figure>\n      <img src=\"" + (model.image_url || '//placehold.it/128.png') + "\" />\n    </figure>\n  </div>\n\n  <div class=\"content\">\n    <header>\n      <div class=\"name\">" + model.name + "</div class=\"name\">\n      <div class=\"location\">Kampala, Uganda</div>\n    </header>\n    <p>" + model.definition_of_service + "</p>\n  </div>\n</section>";
+      model.area_of_service = model.area_of_service || 'Not available';
+      return "<section class=\"school normal\">\n  <div class=\"image\">\n    <figure>\n      <img src=\"" + (model.image_url || '//placehold.it/128.png') + "\" />\n    </figure>\n  </div>\n\n  <div class=\"content\">\n    <header>\n      <div class=\"name\">" + model.name + "</div class=\"name\">\n    </header>\n    <h4>Definition of Service</h4>\n    <p>" + model.definition_of_service + "</p>\n\n    <h4>Area of Service</h4>\n    <p>" + model.area_of_service + "</p>\n  </div>\n</section>";
     };
 
     UniversityController.prototype.itemTemplate = function(model) {};
@@ -1263,6 +1299,7 @@
     };
 
     function WordpressFeed(entry) {
+      var _ref;
       console.log(entry);
       this.title = entry.title;
       this.url = entry.link;
@@ -1270,7 +1307,7 @@
       this.content = entry.content;
       this.date = new Date(entry.publishedDate);
       this.linkText = "Learn More";
-      this.image = entry.mediaGroups[0].contents[1].url.split('?')[0] + "?w=1000" || "http://placehold.it/1000x400";
+      this.image = ((_ref = entry.mediaGroups[0].contents[1]) != null ? _ref.url.split('?')[0] : void 0) + "?w=1000" || "http://placehold.it/1000x400";
     }
 
     return WordpressFeed;

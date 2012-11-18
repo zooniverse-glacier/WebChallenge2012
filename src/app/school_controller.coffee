@@ -21,7 +21,6 @@ class SchoolController extends window.App.Controller
   listTemplate: (model) ->
     progress = 'begin'
     progress_text = ''
-    console.log "template model ", model
     if model.phase_1_complete
       progress = 'one-third'
       progress_text = 'Phase 1: Complete'
@@ -62,7 +61,7 @@ class SchoolController extends window.App.Controller
     $('.project-list.universities').hide()
     progress = 'begin'
     progress_text = ''
-    console.log "template model ", model
+
     if model.phase_1_complete
       progress = 'one-third'
       progress_text = 'Phase 1: Complete'

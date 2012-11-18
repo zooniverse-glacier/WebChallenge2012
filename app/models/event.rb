@@ -7,5 +7,5 @@ class Event < ActiveRecord::Base
   
   belongs_to :school
   
-  default_scope order('data asc')
+  default_scope order('date asc')
 end

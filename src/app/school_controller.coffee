@@ -62,6 +62,7 @@ class SchoolController extends window.App.Controller
     progress = 'begin'
     progress_text = ''
 
+    console.log model
     if model.phase_1_complete
       progress = 'one-third'
       progress_text = 'Phase 1: Complete'
@@ -76,7 +77,7 @@ class SchoolController extends window.App.Controller
       <section class="school normal">
         <div class="image">
           <figure>
-            <div class="progress #(progress}"></div>
+            <div class="progress #{progress}"></div>
             <img src="#{model.image_url || '//placehold.it/128.png'}">
           </figure>
         </div>

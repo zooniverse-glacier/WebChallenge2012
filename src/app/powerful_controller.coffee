@@ -19,4 +19,4 @@ class PowerfulController
       """
 
         
-window.App.PowerController = PowerController
+window.App.PowerfulController = PowerfulController

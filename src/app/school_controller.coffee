@@ -21,7 +21,7 @@ class SchoolController extends window.App.Controller
   listTemplate: (model) ->
     progress = 'begin'
     progress_text = ''
-
+    console.log "template model ", model
     if model.phase_1_complete
       progress = 'one-third'
       progress_text = 'Phase 1: Complete'
@@ -48,10 +48,11 @@ class SchoolController extends window.App.Controller
             <div class="location">Kampala, Uganda</div>
           </header>
           <p>#{model.story}</p>
+          <p class='schoolClassStats'>
           <div class='storyButtons'>
               <p><a href="#/#{model.slug}" class="standard-button green">View site</a></p>
-              <p class='social'><a target='_blank' href="#{App.SocialNetworks.twitterHref model.name, window.location+'#'+model.slug}"><i class='icon-twitter'> </i></a></p>
-              <p class='social'><a target='_blank' href="#{App.SocialNetworks.twitterHref model.name, model.slug}"><i class='icon-facebook-squared'> </i></a></p>
+              <p class='social'><a style='color:black' target='_blank' href="#{App.SocialNetworks.twitterHref model.name, window.location+'#'+model.slug}"><i class='icon-twitter'> </i></a></p>
+              <p class='social'><a style='color:black' target='_blank' href="#{App.SocialNetworks.twitterHref model.name, model.slug}"><i class='icon-facebook-squared'> </i></a></p>
           </div>  
         </div>
       </section>
@@ -61,7 +62,7 @@ class SchoolController extends window.App.Controller
     $('.project-list.universities').hide()
     progress = 'begin'
     progress_text = ''
-
+    console.log "template model ", model
     if model.phase_1_complete
       progress = 'one-third'
       progress_text = 'Phase 1: Complete'
@@ -88,7 +89,6 @@ class SchoolController extends window.App.Controller
           </header>
           <p>#{model.story}</p>
            <div class='storyButtons'>
-              
               <p class='social'><a target='_blank' href="#{App.SocialNetworks.twitterHref model.name, window.location}"><i class='icon-twitter'> </i></a></p>
               <p class='social'><a target='_blank' href="#{App.SocialNetworks.twitterHref model.name, model.slug}"><i class='icon-facebook-squared'> </i></a></p>
           </div>  

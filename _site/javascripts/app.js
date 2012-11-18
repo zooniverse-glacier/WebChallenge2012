@@ -311,7 +311,7 @@
     CarouselController.prototype.goToNext = function() {
       this.el.removeClass(this.countArray[this.item]);
       if (this.forward) {
-        if (this.item < 3) {
+        if (this.item < 1) {
           this.item += 1;
         } else {
           this.forward = false;
@@ -899,9 +899,23 @@
       return _results;
     };
 
+    School.imageForDonationType = function(don) {
+      var types;
+      don = don.replace(/\s/g, "");
+      types = {
+        "soccerballs": 'Soccer-Ball',
+        "laptops": 'Laptop',
+        "schoolsupplies": "School-Supplies",
+        "bras": "Bra",
+        "books": "Book"
+      };
+      console.log(don, types[don]);
+      return types[don];
+    };
+
     return School;
 
-  })(window.App.Model);
+  }).call(this, window.App.Model);
 
   window.App.School = School;
 
@@ -948,6 +962,17 @@
       return this.startList(this.models);
     };
 
+    SchoolController.prototype.donationsTemplate = function(model) {
+      var donationType, result, _i, _len, _ref;
+      result = "";
+      _ref = model.donations;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        donationType = _ref[_i];
+        result = result + ("<p style='display:inline-block; vertical-align:middle;'class='donationType'> <img src='images/donationTypeImages/" + (App.School.imageForDonationType(donationType)) + ".png'></img> <br /> " + donationType + " </p>");
+      }
+      return result;
+    };
+
     SchoolController.prototype.listTemplate = function(model) {
       var progress, progress_text;
       progress = 'begin';
@@ -964,7 +989,7 @@
         progress = 'complete';
         progress_text = 'Phase 3: Complete';
       }
-      return "<section class=\"school normal\">\n  <div class=\"image\">\n    <figure>\n      <div class=\"progress " + progress + "\"></div>\n      <img src=\"" + (model.image_url || '//placehold.it/128.png') + "\" />\n    </figure>\n    <figcaption>" + progress_text + "</figcaption>\n  </div>\n\n  <div class=\"content\">\n    <header>\n      <div class=\"name\">" + model.name + "</div class=\"name\">\n      <div class=\"location\">Kampala, Uganda</div>\n    </header>\n    <p>" + model.story + "</p>\n    <p class='schoolClassStats'>\n    <div class='storyButtons'>\n        <p><a href=\"#/" + model.slug + "\" class=\"standard-button green\">View site</a></p>\n        <p class='social'><a style='color:black' target='_blank' href=\"" + (App.SocialNetworks.twitterHref(model.name, window.location + '#' + model.slug)) + "\"><i class='icon-twitter'> </i></a></p>\n        <p class='social'><a style='color:black' target='_blank' href=\"" + (App.SocialNetworks.twitterHref(model.name, model.slug)) + "\"><i class='icon-facebook-squared'> </i></a></p>\n    </div>  \n  </div>\n</section>";
+      return "<section class=\"school normal\">\n  <div class=\"image\">\n    <figure>\n      <div class=\"progress " + progress + "\"></div>\n      <img src=\"" + (model.image_url || '//placehold.it/128.png') + "\" />\n    </figure>\n    <figcaption>" + progress_text + "</figcaption>\n  </div>\n\n  <div class=\"content\">\n    <header>\n      <div class=\"name\">" + model.name + "</div class=\"name\">\n      <div class=\"location\">Uganda</div>\n    </header>\n    <p>" + model.story + "</p>\n\n    <div class='storyButtons'>\n        <p><a href=\"#/" + model.slug + "\" class=\"standard-button green\">View site</a></p>\n        <p class='social'><a style='color:black' target='_blank' href=\"" + (App.SocialNetworks.twitterHref(model.name, window.location + '#' + model.slug)) + "\"><i class='icon-twitter'> </i></a></p>\n        <p class='social'><a style='color:black' target='_blank' href=\"" + (App.SocialNetworks.twitterHref(model.name, model.slug)) + "\"><i class='icon-facebook-squared'> </i></a></p>\n    </div>  \n  </div>\n</section>";
     };
 
     SchoolController.prototype.itemTemplate = function(model) {
@@ -984,7 +1009,7 @@
         progress = 'complete';
         progress_text = 'Phase 3: Complete';
       }
-      return "<section class=\"school normal\">\n  <div class=\"image\">\n    <figure>\n      <div class=\"progress " + progress + "\"></div>\n      <img src=\"" + (model.image_url || '//placehold.it/128.png') + "\">\n    </figure>\n  </div>\n\n  <div class=\"content\">\n    <header>\n      <div class=\"name\">" + model.name + "</div class=\"name\">\n      <div class=\"location\">Kampala, Uganda</div>\n    </header>\n    <p>" + model.story + "</p>\n     <div class='storyButtons'>\n        <p class='social'><a target='_blank' href=\"" + (App.SocialNetworks.twitterHref(model.name, window.location)) + "\"><i class='icon-twitter'> </i></a></p>\n        <p class='social'><a target='_blank' href=\"" + (App.SocialNetworks.twitterHref(model.name, model.slug)) + "\"><i class='icon-facebook-squared'> </i></a></p>\n    </div>  \n  </div>\n</section>\n\n<section class=\"normal\">\n  <h1><strong>Project Timeline</strong></h1>\n  <div id=\"school_timeline\"></div>\n</section>";
+      return "<section class=\"school normal\">\n  <div class=\"image\">\n    <figure>\n      <div class=\"progress " + progress + "\"></div>\n      <img src=\"" + (model.image_url || '//placehold.it/128.png') + "\">\n    </figure>\n  </div>\n\n  <div class=\"content\">\n    <header>\n      <div style='display:inline-block;vertical-align:middle' class=\"name\">" + model.name + "</div class=\"name\">\n      <div style='display:inline-block;vertical-align:middle; margin-left: 20px' class='storyButtons'>\n        <p class='social'><a target='_blank' href=\"" + (App.SocialNetworks.twitterHref(model.name, window.location)) + "\"><i style='color:black' class='icon-twitter'> </i></a></p>\n        <p class='social'><a target='_blank' href=\"" + (App.SocialNetworks.twitterHref(model.name, model.slug)) + "\"><i style='color:black' class='icon-facebook-squared'> </i></a></p>\n      </div>  \n      <div class=\"location\">Uganda</div>\n    </header>\n    <p>" + model.story + "</p>\n    <div class='requiredDonations'>\n      <p class='schoolClassStats'>Teachers: " + (model["Teachers"] || 'unknown') + " Students: " + (model["Students"] || 'unknown') + " </p>\n      <p style='font-size:14px; margin-bottom:0px '>Donations Required</p>\n      " + (this.donationsTemplate(model)) + "\n      <div class=\"column\"><p><a href=\"donateGift.html\" class=\"orange standard-button\">Give a gift</a></p></div>\n\n    </div>\n     \n  </div>\n</section>\n\n<section class=\"normal\">\n  <h1><strong>Project Timeline</strong></h1>\n  <div id=\"school_timeline\"></div>\n</section>";
     };
 
     SchoolController.prototype.startList = function(schools) {

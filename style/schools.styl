@@ -3,18 +3,19 @@
 
   .image
     float: left
-    width: 33%
+    width: 27%
 
     figure
       margin: 0
-      height: 114px
+      height: 142px
       overflow: hidden
       position: relative
-      width: 114px
+      width: 142px
 
+      $progress_shadow = 0 2px 2px rgba(black, 0.33) inset, 0 1px 0 rgba(white, 0.5)
       .progress
         border-radius: 50%
-        box-shadow: 0 2px 2px rgba(black, 0.33) inset, 0 1px 0 rgba(white, 0.5)
+        box-shadow: $progress_shadow
         height: 100%
         left: 0
         overflow: hidden
@@ -29,12 +30,17 @@
           top: 0
           width: 50%
 
+        &.begin
+          background: white
+
         &.one-third
           background: white
 
           &:after
             background: $green
             left: 50%
+            border-radius: 0 130px 80px 0px
+            box-shadow: $progress_shadow
 
         &.two-thirds
           background: $green
@@ -42,9 +48,11 @@
           &:after
             background: white
             left: 0
+            border-radius: 130px 0 0 80px
+            box-shadow: $progress_shadow
 
         &.complete
-          background: $green
+          background: $blue
 
           &:after
             background: transparent
@@ -55,20 +63,31 @@
         display: block
         position: relative
         margin: 7px
+        width: 128px
+        height: 128px
 
-      figcaption
-        color: inherit
+    figcaption
+      width: 142px
+      margin-top: 8px
+      color: inherit
+      font-size: 0.9em
+      font-weight: 700
+      text-align: center
 
   .content
     float: left;
-    width: 67%
+    width: 73%
 
     header
       .name
         font: 30px Arvo, serif
 
       .location
+        padding: 0 0 0 14px
+        background: url(../images/green-drop.png) no-repeat
         color: gray
+        font-size: 11px
+        text-transform: uppercase
 
       a.view
         background: $green

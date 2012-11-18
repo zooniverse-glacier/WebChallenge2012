@@ -15,9 +15,8 @@ class Controller
     $(window).off 'hashchange'
 
   route: =>
-    @hash = location.hash
-    @el.empty()
-    if @hash is ''
+    hash = location.hash
+    if hash is ''
       @index()
     else
       @show hash
@@ -36,5 +35,6 @@ class Controller
   renderOne: (id) =>
     model = @model[name]
     @el.append @itemTemplate(model)
+    @start()
 
 window.App.Controller = Controller

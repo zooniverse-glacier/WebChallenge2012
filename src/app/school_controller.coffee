@@ -27,5 +27,30 @@ class SchoolController extends window.App.Controller
     """
 
   itemTemplate: (model) ->
+    """
+      <section class="school">
+        <div class="image">
+          <figure>
+            <div class="progress one-third"></div>
+            <img src="#{model.imageUrl || '//placehold.it/100.png'}">
+          </figure>
+        </div>
+
+        <div class="content">
+          <header>
+            <div class="name">#{model.name}</div class="name">
+            <div class="location">Kampala, Uganda</div>
+          </header>
+          <p>#{model.story}</p>
+          <p><a href="#/#{model.id}">View site</a></p>
+        </div>
+      </section>
+
+      <div id="timeline"></div>
+    """
+
+  start: =>
+    timeline = new window.App.Timeline("#timeline", @model, 1040)
+
 
 window.App.SchoolController = SchoolController

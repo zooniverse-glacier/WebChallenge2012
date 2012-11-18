@@ -39,15 +39,16 @@ class Controller
     @startList @models
 
   renderOne: (model) =>
-    @el.html @itemTemplate(model)
-    header = 
-      """
-      <section class="normal">
-        <h1><strong>#{model.name}</strong></h1>
-      </section>
-      """
-    @el.prepend header
-    @start model
+    if model
+      @el.html @itemTemplate(model)
+      header = 
+        """
+        <section class="normal">
+          <h1><strong>#{model.name}</strong></h1>
+        </section>
+        """
+      @el.prepend header
+      @start model
 
   startList: =>
 

@@ -229,10 +229,12 @@
 
     Controller.prototype.renderOne = function(model) {
       var header;
-      this.el.html(this.itemTemplate(model));
-      header = "<section class=\"normal\">\n  <h1><strong>" + model.name + "</strong></h1>\n</section>";
-      this.el.prepend(header);
-      return this.start(model);
+      if (model) {
+        this.el.html(this.itemTemplate(model));
+        header = "<section class=\"normal\">\n  <h1><strong>" + model.name + "</strong></h1>\n</section>";
+        this.el.prepend(header);
+        return this.start(model);
+      }
     };
 
     Controller.prototype.startList = function() {};
@@ -418,10 +420,12 @@
 
     Controller.prototype.renderOne = function(model) {
       var header;
-      this.el.html(this.itemTemplate(model));
-      header = "<section class=\"normal\">\n  <h1><strong>" + model.name + "</strong></h1>\n</section>";
-      this.el.prepend(header);
-      return this.start(model);
+      if (model) {
+        this.el.html(this.itemTemplate(model));
+        header = "<section class=\"normal\">\n  <h1><strong>" + model.name + "</strong></h1>\n</section>";
+        this.el.prepend(header);
+        return this.start(model);
+      }
     };
 
     Controller.prototype.startList = function() {};
@@ -968,7 +972,6 @@
       $('.project-list.universities').hide();
       progress = 'begin';
       progress_text = '';
-      console.log(model);
       if (model.phase_1_complete) {
         progress = 'one-third';
         progress_text = 'Phase 1: Complete';

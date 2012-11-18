@@ -46,7 +46,6 @@ class Timeline
     $(".marker").removeClass('active')
     $(".marker#{@currentlySelectedId}").addClass('active')
 
-
   render:=>
     markers = (@renderEvent(event,index) for event,index in @school.events )  
     content = """

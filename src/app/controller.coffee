@@ -2,7 +2,7 @@ class Controller
   constructor: (@selector, @model) ->
     @el = $(@selector)
     @models = new Object
-    @model.on 'fetch-all', (models) =>
+    @model.on 'fetch-all' + @model.url, (models) =>
       @models[model.slug] = model for model in models
       @startRouting()
     @model.fetchAll()

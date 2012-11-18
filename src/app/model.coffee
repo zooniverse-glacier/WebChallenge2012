@@ -20,7 +20,7 @@ class Model extends window.App.Events
     $.getJSON "https://#{@base_url}/#{@url}.json?callback=?", (data) =>
       @models = new Array
       @models.push new @({data: datum}) for datum in data
-      @trigger 'fetch-all', @models
+      @trigger 'fetch-all' + @url, @models
 
   @fetchById: (id) ->
     $.getJSON "https://#{@base_url}/#{@url}/#{id}.json?callback=?", (data) ->

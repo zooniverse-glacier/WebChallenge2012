@@ -25,10 +25,10 @@ class SchoolController extends window.App.Controller
     if model.phase_1_complete
       progress = 'one-third'
       progress_text = 'Phase 1: Complete'
-    else if model.phase_2_complete
+    if model.phase_2_complete
       progress = 'two-thirds'
       progress_text = 'Phase 2: Complete'
-    else if model.phase_3_complete
+    if model.phase_3_complete
       progress = 'complete'
       progress_text = 'Phase 3: Complete'
 

@@ -30,11 +30,11 @@ class Map
     marker = new L.marker pos,
       icon : @markerIcon
 
-    marker.bindPopup(@renderPopUp(school))
+    # marker.bindPopup(@renderPopUp(school))
     marker.addTo(@map)
 
-  centerSchool: (lat, lng) =>
-    center  = new L.LatLng(lat, lng)
+  centerSchool: (school) =>
+    center  = new L.LatLng(school.lat, school.lng)
     @map.setView center, @schoolZoom
 
   renderPopUp: (school) ->

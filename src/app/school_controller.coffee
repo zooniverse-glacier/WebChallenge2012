@@ -68,14 +68,22 @@ class SchoolController extends window.App.Controller
   startList: (schools) =>
     unless @map
       @map = new window.App.Map(element: 'map')
-      @map.addSchool(school) for school in schools
+    
+    @map.addSchool(schoolForMap) for hash,schoolForMap of @models
     
   start: (school) =>
     unless @map
       @map = new window.App.Map(element: 'map', lat: school.lat, lng: school.lng)
-    else
-      @map.centerSchool school.lat, school.lng
-    timeline = new window.App.Timeline(school, "#school_timeline")
+      
+    for hash,schoolForMap of @models
+      @map.addSchool schoolForMap
+
+    @map.centerSchool school
+    if @currentTimeLine
+      @currentTimeLine.remove()
+      delete @currentTimeLine
+      
+    @currentTimeLine = new window.App.Timeline(school, "#school_timeline")
 
 
 window.App.SchoolController = SchoolController

@@ -27,7 +27,10 @@ class Timeline
       @animating = true
       @animate()
 
-
+  remove:=>
+    @el.remove()
+    clearTimeout @currentTimeout
+    
   convertX:(event)->
     @days  = moment(@startTime).diff(event.date, 'days')
     (@days*1.0/(1.0*@totalDays))*@width

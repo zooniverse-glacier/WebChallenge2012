@@ -15,12 +15,36 @@ class Timeline
     @endTime = moment(school.events[school.events.length-1].date).add('days',20)
     @totalDays = moment(@startTime).diff(@endTime, 'days')
     @render()
+    @currentlySelectedId=0
+    @animating = true
+    @animate()
+
+    $(".marker").hover (e)=>
+      @showStep($(e.currentTarget).data().id)
+      clearTimeout @currentTimeout
+      @animating = false 
+    ,(e)=>
+      @animating = true
+      @animate()
+
 
   convertX:(event)->
     @days  = moment(@startTime).diff(event.date, 'days')
     (@days*1.0/(1.0*@totalDays))*@width
 
-  render:->
+  animate:=>
+    if @animating
+      @currentTimeout = setTimeout @animate, 2000
+    @currentlySelectedId = (@currentlySelectedId + 1) % @school.events.length    
+    @showStep()
+
+  showStep:(number = null)=>
+    if number then @currentlySelectedId=number
+    $(".marker").removeClass('active')
+    $(".marker#{@currentlySelectedId}").addClass('active')
+
+
+  render:=>
     markers = (@renderEvent(event,index) for event,index in @school.events )  
     content = """
       <div class='timeline'>
@@ -49,7 +73,7 @@ class Timeline
       """
 
     """
-      <li class='marker stage#{stage}' data-id=#{id} style='left:#{xPoint}px'> #{tooltip} <div style='background-color:#{stageCol}' class='markerInner'></div></li>
+      <li class='marker marker#{id} stage#{stage}' data-id=#{id} style='left:#{xPoint}px'> #{tooltip} <div style='background-color:#{stageCol}' class='markerInner'></div></li>
     """
 
 window.App.Timeline = Timeline

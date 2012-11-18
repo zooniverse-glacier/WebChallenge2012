@@ -12,8 +12,8 @@ class SocialNetworks
     &p[images][0]=#{image}
     """
 
-  @twitterHref: ->
-    message = "Classifying animals in the Serengeti! #{@talkHref()} #zooniverse"
+  @twitterHref: (orgName, url)->
+    message = "Check out the great work that Pangea Education is doing with #{orgName} #{url} #PangeaEducation"
     "http://twitter.com/home?status=#{encodeURIComponent message}"
 
   @pinterestHref: ->

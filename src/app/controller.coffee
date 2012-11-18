@@ -46,4 +46,8 @@ class Controller
     @el.prepend header
     @start model
 
+  startList: =>
+
+  start: =>
+
 window.App.Controller = Controller

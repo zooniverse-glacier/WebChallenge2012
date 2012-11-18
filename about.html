@@ -3,3 +3,50 @@ title: About
 layout: default
 ---
 
+<section class="normal intro" style="text-align: center">
+  <h1><strong>About</strong></h1>
+  <nav>
+    <a href="#mission">Mission</a>
+    <a href="#board">Board</a>
+    <a href="#team">Team</a>
+    <a href="#financials">Financials</a>
+  </nav>
+</section>
+  
+<section id="mission" class="normal">
+  <h2><strong>Mission</strong></h2>
+
+  {% for page in site.pages %}
+    {% if page.slug == "mission" %}
+      <div class="content markdownSection">
+        {{ page.content }}
+      </div>
+    {% endif %}
+  {% endfor %}
+</section>
+
+<section id="board" class="normal">
+  <h2><strong>Board</strong></h2>
+
+  <div class="board">
+  </div>
+</section>
+
+<section id="team" class="normal">
+  <h2><strong>Team</strong></h2>
+
+  <div class="team">
+  </div>
+</section>
+
+<section id="financials" class="normal">
+  <h2><strong>Financials</strong></h2>
+
+  {% for page in site.pages %}
+    {% if page.slug == "financials" %}
+      <div class="content markdownSection">
+        {{ page.content }}
+      </div>
+    {% endif %}
+  {% endfor %}
+</section>

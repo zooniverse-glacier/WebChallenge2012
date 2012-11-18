@@ -1,0 +1,99 @@
+html
+  background: $base-background
+  font: 14px $sans
+
+body
+  margin: 0
+
+hr
+  border: 0
+  border-bottom: 1px solid white
+  border-top: 1px solid rgba(black, 0.25)
+
+img
+  max-width: 100%
+
+  &.framed
+    border: 3px solid white
+    box-shadow: 0 1px 1px rgba(black, 0.33)
+    margin: 0 0 0.5em
+
+h1,
+h2
+  font: 30px $open-sans
+  text-align: center
+  text-transform: uppercase
+  margin: 30px 0
+  position: relative
+
+  &:before
+    border-bottom: 1px solid rgba(black, 0.25)
+    border-top: 1px solid white
+    box-shadow: 0 -1px 0 rgba(black, 0.25), 0 1px 0 white
+    content: ""
+    height: 2px
+    left: 0
+    position: absolute
+    top: 20px
+    width: 100%
+
+  > strong
+    background: $content-background
+    display: inline-block
+    line-height: 1
+    padding: 0 20px
+    position: relative
+
+h3
+  font: 20px $serif
+  margin: 0
+
+a
+  color: $green
+  text-decoration: none
+
+#container
+  background: $content-background
+  box-shadow: 0 0 5px rgba(black, 0.5)
+  margin: 0 auto
+  max-width: 1000px
+  padding: 1px 0
+  width: 90%
+
+  .logo
+    display: inline-block
+    margin: 10px 100px
+
+    @media (max-width: 500px)
+      &
+        margin: 10px 20px
+
+  > header
+    background: $dark-blue
+    color: white
+    overflow: hidden
+
+    nav
+      float: right
+      margin-right: 100px
+
+      ul
+        margin: 0
+        padding: 0
+
+        li
+          display: inline-block
+          list-style: none
+
+          a
+            color: inherit
+            display: block
+            padding: 15px 10px
+
+  > section
+    margin: 20px 100px
+    padding: 1px 0
+
+    @media (max-width: 500px)
+      &
+        margin: 20px

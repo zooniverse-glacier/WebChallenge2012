@@ -1,0 +1,38 @@
+$green = #a7d434
+$orange = #faad19
+$light-blue = #29a8e0
+$dark-blue = #0c1932
+
+$text-color = #160b00
+$base-background = #eeedeb
+$content-background = #f7f6f1
+
+$serif = Arvo, serif
+$sans = "Helvetica Neue", Arial, Helvetica, sans-serif
+$open-sans = "Open Sans Condensed", $sans
+
+.standard-button
+  border: 1px solid rgba(black, 0.33)
+  border-radius: 5px
+  box-shadow: 0 1px 0 rgba(white, 0.67) inset, 0 1px 2px rgba(black, 0.5)
+  color: white;
+  display: inline-block
+  padding: 5px 30px
+  text-align: center
+  text-shadow: 0 1px 1px rgba(black, 0.33)
+
+  &:hover {
+    border-color: black
+  }
+
+  &:active
+    box-shadow: 0 100px 0 rgba(black, 0.25) inset, 0 3px 3px rgba(black, 0.25) inset
+
+  &.orange
+    background: $orange
+
+  &.green
+    background: $green
+
+  &.blue
+    background: $light-blue

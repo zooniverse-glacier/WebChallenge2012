@@ -11,8 +11,9 @@ $ ->
 
   App.MarkFudge.fudge() 
 
-  if location.pathname is '/schools'
-    school_controller = new App.SchoolController()
+  if location.pathname is '/schools.html'
+    school_controller = new App.SchoolController
+
   else if location.pathname is '/universities'
     university_controller = new App.UniversityController()
 

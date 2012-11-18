@@ -704,9 +704,22 @@
     PeopleController.prototype.startList = function() {
       console.log($('.person'));
       return $('.person').hover(function() {
-        return $(this).find('.popup').show();
+        var index;
+        index = $(this).index();
+        if (index % 3 === 0) {
+          console.log('first');
+          $(this).find('.popup').addClass('first');
+        }
+        if (index % 3 === 1) {
+          console.log('second');
+          $(this).find('.popup').addClass('second');
+        }
+        if (index % 3 === 2) {
+          console.log('third');
+          return $(this).find('.popup').addClass('third');
+        }
       }, function() {
-        return $(this).find('.popup').hide();
+        return $(this).find('.popup').removeClass('first second third');
       });
     };
 

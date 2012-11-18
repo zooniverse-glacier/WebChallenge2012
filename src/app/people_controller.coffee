@@ -26,10 +26,21 @@ class PeopleController extends window.App.Controller
     console.log $('.person')
     $('.person').hover(
         ->
-          $(@).find('.popup').show()
+          index = $(@).index()
+          if index % 3 is 0
+            console.log 'first'
+            $(@).find('.popup').addClass('first')
+
+          if index % 3 is 1
+            console.log 'second'
+            $(@).find('.popup').addClass('second')
+
+          if index % 3 is 2
+            console.log 'third'
+            $(@).find('.popup').addClass('third')
       ,
         ->
-          $(@).find('.popup').hide()
+          $(@).find('.popup').removeClass('first second third')
     )
 
 window.App.PeopleController = PeopleController

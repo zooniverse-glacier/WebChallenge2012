@@ -1,0 +1,49 @@
+.its-the-final-countdown
+  display: inline-block
+  margin: 10px
+
+  .number,
+  .separator
+    background: linear-gradient(#333, #000 50%, #333 50%, #000)
+    border-radius: 3px;
+    box-shadow: 0 5px 5px -3px rgba(black, 0.5)
+    color: white
+    display: inline-block
+    font: 40px/1 $serif
+    float: left
+    margin-right: 1px
+    padding: 13px 6px 11px
+    position: relative
+    text-align: center
+    width: 0.6em
+
+    &:before
+      background: linear-gradient(rgba(#000, 0) 75%, rgba(#000, 0.25))
+      border-radius: 3px
+      content: ""
+      height: 50%
+      left: 0
+      position: absolute
+      top: 0
+      width: 100%
+
+  .number
+    &:after
+      border-top: 2px solid black
+      content: ""
+      left: 0
+      position: absolute
+      top: 50%
+      width: 100%
+
+    &.flip
+      background: black
+      color: #666
+
+      &:before
+        background: black
+        top: 50%
+
+  .separator
+    background: linear-gradient(#222, #000)
+    padding: 13px 0px 11px

@@ -5,19 +5,32 @@ class SchoolController extends window.App.Controller
   constructor: () ->
     super '.schools', window.App.School
 
+  renderAll: =>
+    compiled = (@listTemplate(model) for key, model of @models)
+    @el.html compiled.join(" ")
+    header = 
+      """
+      <section class="normal">
+        <h1><strong>Uganda</strong></h1>
+      </section>
+      """
+
+    @el.prepend header
+    @startList @models
+
   listTemplate: (model) ->
-    if model.phase_3_complete
-      progress = 'complete'
-      progress_text = 'Phase 3: Complete'
+    progress = 'begin'
+    progress_text = ''
+
+    if model.phase_1_complete
+      progress = 'one-third'
+      progress_text = 'Phase 1: Complete'
     else if model.phase_2_complete
       progress = 'two-thirds'
       progress_text = 'Phase 2: Complete'
-    else if model.phase_1_complete
-      progress = 'one-third'
-      progress_text = 'Phase 1: Complete'
-    else
-      progress = 'begin'
-      progress_text = ''
+    else if model.phase_3_complete
+      progress = 'complete'
+      progress_text = 'Phase 3: Complete'
 
     """
       <section class="school normal">
@@ -45,11 +58,25 @@ class SchoolController extends window.App.Controller
     """
 
   itemTemplate: (model) ->
+    $('.project-list.universities').hide()
+    progress = 'begin'
+    progress_text = ''
+
+    if model.phase_1_complete
+      progress = 'one-third'
+      progress_text = 'Phase 1: Complete'
+    if model.phase_2_complete
+      progress = 'two-thirds'
+      progress_text = 'Phase 2: Complete'
+    if model.phase_3_complete
+      progress = 'complete'
+      progress_text = 'Phase 3: Complete'
+
     """
       <section class="school normal">
         <div class="image">
           <figure>
-            <div class="progress one-third"></div>
+            <div class="progress #(progress}"></div>
             <img src="#{model.image_url || '//placehold.it/128.png'}">
           </figure>
         </div>

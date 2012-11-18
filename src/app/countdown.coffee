@@ -2,6 +2,7 @@ class Countdown
   target: +new Date() + 1000 * 60 * 60 * 24 * 7
 
   el: null
+  tagName: 'span'
   className: 'its-the-final-countdown'
   template: '''
     <span class="weeks number"></span>
@@ -25,7 +26,7 @@ class Countdown
 
     @target = +@target
 
-    @el ?= '<span></span>'
+    @el ?= "<#{@tagName}></#{@tagName}>"
     @el = $(@el)
     @el.html @template
     @el.addClass @className

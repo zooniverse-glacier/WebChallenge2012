@@ -87,17 +87,23 @@ body, html
   box-shadow: 0 2px 5px rgba(#000, 0.2)
 
   > header
-    width: 100%
     color: #fff
-    height: 81px
-    margin-bottom: 2px solid white
+    height: 80px
 
     .logo
       margin: 14px 0 0 105px
-      
-    li
-      display: inline-block
-      vertical-align: center
+
+    nav
+      float: right
+      margin-top: 20px
+
+      ul
+        li
+          display: inline-block
+
+          a {
+            color: inherit
+          }
 
 #map
   width : $map-width px

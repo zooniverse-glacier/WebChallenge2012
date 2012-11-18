@@ -59,8 +59,8 @@ body > footer{color:#fff;margin:0 auto;max-width:1000px;text-align:center;width:
 .school .content header .name{font:30px Arvo,serif}
 .school .content header .location{padding:0 0 0 14px;background:url("../images/green-drop.png") no-repeat;color:#808080;font-size:11px;text-transform:uppercase}
 .school .content header a.view{background:#a7d434}
-.school .content .requiredDonations .donationType{display:inline-block;vertical-align:middle;margin-right:20px;font-size:10px;text-align:center;}
-.school .content .requiredDonations .donationType img{width:65px}
+.school .content .requiredDonations .donationType{display:inline-block;vertical-align:middle;margin-right:20px;font-size:12px;text-align:center;}
+.school .content .requiredDonations .donationType img{width:40px}
 .storyButtons p{display:inline-block;vertical-align:middle;}
 .storyButtons p.social{font-size:20px;color:#000}
 .timeline{position:relative;width:100%;height:40px;margin:0 0 30px 0;}

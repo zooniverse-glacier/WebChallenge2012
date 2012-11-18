@@ -21,7 +21,7 @@ class SchoolController extends window.App.Controller
   donationsTemplate:(model)->
     result= ""
     for donationType in model.donations 
-      result = result + "<p class='donationType'> <img src='images/donationTypeImages/#{App.School.imageForDonationType donationType}.png'></img> <br />#{donationType} </p>"
+      result = result + "<p style='display:inline-block; vertical-align:middle;'class='donationType'> <img src='images/donationTypeImages/#{App.School.imageForDonationType donationType}.png'></img> <br /> #{donationType} </p>"
     result
 
   listTemplate: (model) ->
@@ -50,7 +50,7 @@ class SchoolController extends window.App.Controller
         <div class="content">
           <header>
             <div class="name">#{model.name}</div class="name">
-            <div class="location">Kampala, Uganda</div>
+            <div class="location">Uganda</div>
           </header>
           <p>#{model.story}</p>
 
@@ -89,21 +89,22 @@ class SchoolController extends window.App.Controller
 
         <div class="content">
           <header>
-            <div class="name">#{model.name}</div class="name">
-            <div class="location">Kampala, Uganda</div>
+            <div style='display:inline-block;vertical-align:middle' class="name">#{model.name}</div class="name">
+            <div style='display:inline-block;vertical-align:middle; margin-left: 20px' class='storyButtons'>
+              <p class='social'><a target='_blank' href="#{App.SocialNetworks.twitterHref model.name, window.location}"><i style='color:black' class='icon-twitter'> </i></a></p>
+              <p class='social'><a target='_blank' href="#{App.SocialNetworks.twitterHref model.name, model.slug}"><i style='color:black' class='icon-facebook-squared'> </i></a></p>
+            </div>  
+            <div class="location">Uganda</div>
           </header>
           <p>#{model.story}</p>
           <div class='requiredDonations'>
             <p class='schoolClassStats'>Teachers: #{model["Teachers"] || 'unknown' } Students: #{model["Students"] || 'unknown' } </p>
-            <p style='font-size:15px'>Donations Required</p>
+            <p style='font-size:14px; margin-bottom:0px '>Donations Required</p>
             #{@donationsTemplate model}
             <div class="column"><p><a href="donateGift.html" class="orange standard-button">Give a gift</a></p></div>
 
           </div>
-           <div class='storyButtons'>
-              <p class='social'><a target='_blank' href="#{App.SocialNetworks.twitterHref model.name, window.location}"><i class='icon-twitter'> </i></a></p>
-              <p class='social'><a target='_blank' href="#{App.SocialNetworks.twitterHref model.name, model.slug}"><i class='icon-facebook-squared'> </i></a></p>
-          </div>  
+           
         </div>
       </section>
 

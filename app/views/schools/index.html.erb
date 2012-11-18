@@ -16,7 +16,7 @@
   <% @schools.each do |school| %>
     <tr data-id="<%= school.id %>" class="movable" style="cursor: move;">
       <td><%= school.name %></td>
-      <td><%= school.story %></td>
+      <td><%= truncate(school.story, separator: ' ') %></td>
       <td><%= school.enabled %></td>
       <td><%= school.timeline_start_at %></td>
       <td><%= school.timeline_end_at %></td>

@@ -17,7 +17,7 @@
     <% @universities.each do |university| %>
       <tr data-id="<%= university.id %>" class="movable" style="cursor: move;">
         <td><%= university.name %></td>
-        <td><%= university.definition_of_service %></td>
+        <td><%= truncate(university.definition_of_service, separator: ' ') %></td>
         <td><%= university.area_of_service %></td>
         <td><%= university.contact %></td>
         <td><%= university.enabled %></td>

@@ -28,9 +28,8 @@ class Controller
     @renderOne @models[name]
 
   renderAll: =>
-    @el.append '<ul class="school-list">'
     @el.append @listTemplate(model) for key, model of @models
-    @el.append '</ul>'
+    @startList()
 
   renderOne: (id) =>
     model = @model[name]

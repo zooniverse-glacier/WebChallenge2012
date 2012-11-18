@@ -7,7 +7,7 @@ class SchoolController extends window.App.Controller
 
   listTemplate: (model) ->
     """
-      <section class="school">
+      <section class="school normal">
         <div class="image">
           <figure>
             <div class="progress one-third"></div>
@@ -49,6 +49,9 @@ class SchoolController extends window.App.Controller
       <div id="timeline"></div>
     """
 
+  startList: =>
+    map = new window.App.Map(element: 'map')
+    
   start: =>
     timeline = new window.App.Timeline("#timeline", @model, 1040)
 

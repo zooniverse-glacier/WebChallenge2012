@@ -81,32 +81,39 @@ figure
   padding: 1px 0
   width: 90%
 
+body > header
+  background: $dark-blue
+  color: white
+  overflow: hidden
+  width: 1000px
+  margin 20px auto
+
   .logo
     display: inline-block
-    margin: 10px 100px
+    margin: 10px 0
 
     @media (max-width: 500px)
       &
         margin: 10px 20px
 
-  > header
-    background: $dark-blue
-    color: white
-    overflow: hidden
+  nav
+    float: right
+    font-size: 13px
+    font-weight: bold
+    margin: 10px 0 0 0
 
-    nav
-      float: right
-      margin-right: 100px
+    ul
+      margin: 0
+      padding: 0
 
-      ul
-        margin: 0
-        padding: 0
+      li
+        display: inline-block
+        list-style: none
 
-        li
-          display: inline-block
-          list-style: none
+        a
+          color: inherit
+          display: block
+          padding: 15px 10px
 
-          a
-            color: inherit
-            display: block
-            padding: 15px 10px
+          &:hover
+            color: $green

@@ -1,0 +1,41 @@
+---
+title: Programs
+layout: default
+---
+
+<section class="normal intro" style="text-align: center">
+  <h1><strong>Programs</strong></h1>
+  <nav>
+    {% for page in site.pages %}
+      {% if page.contentTag == "programsSection" %}
+        <a href="#{{ page.slug }}">{{ page.title }}</a>
+      {% endif %}
+    {% endfor %}
+  </nav>
+
+  <p>Lorem ipsum dolor sit amet. Jam that in there real quick</p>
+</section>
+
+{% for page in site.pages %}
+  {% if page.contentTag == "programsSection" %}
+    <section id="{{ page.slug }}" class="normal">
+      <h2><strong>{{ page.title }}</strong></h2>
+
+      <div class="two columns">
+        {% if page.photo %}
+          <div class="narrow column">
+            <figure>
+              <img src="{{ page.photo }}" />
+            </figure>
+          </div>
+        {% endif %}
+
+        <div class="{% if page.photo %}wide{% endif %} column">
+          <div class="content markdownSection">
+            {{ page.content }}
+          </div>
+        </div>
+      </div>
+    </section>
+  {% endif %}
+{% endfor %}

@@ -1,11 +1,11 @@
 class UniversitiesController < ApplicationController
   respond_to :html
-  respond_to :json, only: [:index, :show]
-  before_filter :login_required, only: [:new, :create, :edit, :update, :destroy]
+  respond_to :json, only: [:index, :show, :order]
+  before_filter :login_required, only: [:new, :create, :edit, :update, :destroy, :order]
   
   def index
     respond_to do |format|
-      format.html{ @universities = University.all }
+      format.html{ @universities = University.order('position asc').all }
       format.json{ respond_with University.for_json.all, callback: params[:callback] }
     end
   end
@@ -20,6 +20,14 @@ class UniversitiesController < ApplicationController
   def new
     @university = University.new
     respond_with @university
+  end
+  
+  def order
+    params[:orders].each_pair do |key, val|
+      University.find(key.to_i).update_attribute :position, val.to_i
+    end
+    
+    render json: { }, status: 200
   end
   
   def create

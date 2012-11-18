@@ -12,7 +12,7 @@ class School < ActiveRecord::Base
   validate :validate_dates
   before_save :slugify, :set_position
   
-  accepts_nested_attributes_for :events, :allow_destroy => true
+  accepts_nested_attributes_for :events, allow_destroy: true, reject_if: proc { |attrs| attrs.all? { |k, v| v.blank? } }
   
   def self.for_json
     includes(:events).where('enabled = ?', true).order('position asc')

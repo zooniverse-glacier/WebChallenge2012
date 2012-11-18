@@ -1,11 +1,11 @@
 class SchoolsController < ApplicationController
   respond_to :html
-  respond_to :json, only: [:index, :show]
-  before_filter :login_required, only: [:new, :create, :edit, :update, :destroy]
+  respond_to :json, only: [:index, :show, :order]
+  before_filter :login_required, only: [:new, :create, :edit, :update, :destroy, :order]
   
   def index
     respond_to do |format|
-      format.html{ @schools = School.all }
+      format.html{ @schools = School.order('position asc').all }
       format.json{ respond_with School.for_json.all, include: :events, methods: [:image_url], callback: params[:callback] }
     end
   end
@@ -21,6 +21,14 @@ class SchoolsController < ApplicationController
     @school = School.new
     @school.events.build
     @uploads = Upload.limit(10).order('created_at desc')
+  end
+  
+  def order
+    params[:orders].each_pair do |key, val|
+      School.find(key.to_i).update_attribute :position, val.to_i
+    end
+    
+    render json: { }, status: 200
   end
   
   def create

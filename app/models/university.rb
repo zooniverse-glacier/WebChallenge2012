@@ -1,5 +1,5 @@
 class University < ActiveRecord::Base
-  attr_accessible :name, :definition_of_service, :area_of_service, :contact, :enabled, :position
+  attr_accessible :name, :definition_of_service, :area_of_service, :contact, :enabled, :position, :lat, :lng
   
   validates_presence_of :name
   validates_presence_of :definition_of_service

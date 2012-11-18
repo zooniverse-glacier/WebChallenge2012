@@ -16,7 +16,7 @@
   <div class="control-group">
     <%= event.label :phase, class: 'control-label' %>
     <div class="controls">
-      <%= event.select :phase, [1,2,3] %>
+      <%= event.select :phase, [1,2,3], { include_blank: true } %>
     </div>
   </div>
 

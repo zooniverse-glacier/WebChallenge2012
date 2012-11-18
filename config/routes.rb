@@ -6,9 +6,19 @@ Pangea::Application.routes.draw do
   
   resources :sessions
   resources :users
-  resources :universities
   resources :uploads
-  resources :schools
+  
+  resources :universities do
+    collection do
+      post :order
+    end
+  end
+  
+  resources :schools do
+    collection do
+      post :order
+    end
+  end
   
   root to: 'application#index'
 end

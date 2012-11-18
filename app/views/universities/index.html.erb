@@ -1,30 +1,70 @@
 <% title "Universities" %>
 
 <table class="table table-hover table-bordered">
-  <tr>
-    <th>Name</th>
-    <th>Definition Of Service</th>
-    <th>Area Of Service</th>
-    <th>Contact</th>
-    <th>Enabled</th>
-    <th>Coordinates</th>
-    <th>Position</th>
-    <th colspan="3"></th>
-  </tr>
-  <% for university in @universities %>
+  <thead>
     <tr>
-      <td><%= university.name %></td>
-      <td><%= university.definition_of_service %></td>
-      <td><%= university.area_of_service %></td>
-      <td><%= university.contact %></td>
-      <td><%= university.enabled %></td>
-      <td><%= university.lat %>, <%= university.lng %></td>
-      <td><%= university.position %></td>
-      <td><%= link_to "Show", university, class: 'btn btn-mini' %></td>
-      <td><%= link_to "Edit", edit_university_path(university), class: 'btn btn-mini' %></td>
-      <td><%= link_to "Destroy", university, confirm: 'Are you sure?', method: :delete, class: 'btn btn-mini' %></td>
+      <th>Name</th>
+      <th>Definition Of Service</th>
+      <th>Area Of Service</th>
+      <th>Contact</th>
+      <th>Enabled</th>
+      <th>Coordinates</th>
+      <th>Position</th>
+      <th colspan="3"></th>
     </tr>
-  <% end %>
+  </thead>
+  <tbody>
+    <% @universities.each do |university| %>
+      <tr data-id="<%= university.id %>" class="movable" style="cursor: move;">
+        <td><%= university.name %></td>
+        <td><%= university.definition_of_service %></td>
+        <td><%= university.area_of_service %></td>
+        <td><%= university.contact %></td>
+        <td><%= university.enabled %></td>
+        <td><%= university.lat %>, <%= university.lng %></td>
+        <td class="position"><%= university.position %></td>
+        <td><%= link_to "Show", university, class: 'btn btn-mini' %></td>
+        <td><%= link_to "Edit", edit_university_path(university), class: 'btn btn-mini' %></td>
+        <td><%= link_to "Destroy", university, confirm: 'Are you sure?', method: :delete, class: 'btn btn-mini' %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<p><%= link_to "New University", new_university_path, class: 'btn btn-primary' %></p>
+<p>
+  <%= link_to "New University", new_university_path, class: 'btn btn-primary' %>
+  <%= link_to "Save Positions", '#', id: 'reorderer', class: 'btn pull-right', style: 'display: none;' %>
+</p>
+
+<script type="text/javascript" charset="utf-8">
+  var positionList = { };
+  
+  var reorder = function() {
+    $('tr.movable').toArray().forEach(function(el, i) {
+      $('.position', el).html(i);
+      positionList[$(el).data('id')] = i;
+    });
+  };
+  
+  var reposition = function() {
+    reorder();
+    $('#reorderer').show();
+  }
+  
+  $(function() {
+    reorder();
+    $('table tbody').sortable({
+      item: '> tr.movable',
+      axis: 'y',
+      cursor: 'move',
+      helper: 'clone',
+      stop: reposition
+    });
+    
+    $('#reorderer').on('click', function(ev) {
+      $.post('/universities/order.json', { orders: positionList }, function() {
+        $('#reorderer').hide();
+      });
+    });
+  });
+</script>

@@ -3,7 +3,8 @@ class PeopleController extends window.App.Controller
     super ".#{@personType}", window.App.Person
 
   renderAll: =>
-    @el.append @listTemplate(model) for key, model of @models when model.role isnt @personType
+    roles = if @personType is 'board' then ['board_member'] else ['team', 'director', 'intern']
+    @el.append @listTemplate(model) for key, model of @models when model.role in roles
     @startList()
 
   listTemplate: (model) ->
@@ -18,5 +19,4 @@ class PeopleController extends window.App.Controller
       </section>
     """
 
-
-window.App.Board = Board
+window.App.PeopleController = PeopleController

@@ -11,7 +11,7 @@ class WordpressFeed extends window.App.Events
       if not results.error 
         feedEntries = new Array
         feedEntries.push new @(entry) for entry in results.feed.entries
-        @trigger 'feed-loaded', feedEntries
+        @trigger "feed-loaded:#{feed}", feedEntries
 
   constructor: (entry) ->
     console.log entry

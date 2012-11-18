@@ -6,7 +6,7 @@ class CarouselController
     @forward = true
     @count = -1
     @countArray = ['first', 'second', 'third', 'fourth']
-    window.App.WordpressFeed.on 'feed-loaded', (feed) =>
+    window.App.WordpressFeed.on 'feed-loaded:events', (feed) =>
       @feed = feed
       @render()
     window.App.WordpressFeed.fetch 4, 'events'

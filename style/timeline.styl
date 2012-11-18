@@ -1,0 +1,50 @@
+$circleouter= 12px
+$circleinner= 8px
+$inneroffset= ($circleouter - $circleinner)/2
+
+.timeline
+  height: 130px
+  position: relative
+  .bar 
+    width: 100%
+    height: 5px
+    background-color: #D5D4CD
+    border-bottom: 1px solid white
+    position: absolute
+    top: 107px
+  ul.inner
+    width: 100%
+    position:absolute
+    top: 103px
+    li
+      position:absolute
+      width: $circleouter 
+      height: $circleouter
+      border-radius: $circleouter
+      background-color: white 
+      cursor: pointer
+      .tooltip
+        position: absolute
+        top: -50px
+        left: 0px
+        display: none
+        width: 500px
+        p
+          font-size: 10px
+          color: #a4a296
+          margin:0px
+          padding:0px
+          .event
+            color: black
+
+      &:hover
+        .tooltip
+          display: block
+      .markerInner 
+        left: $inneroffset
+        top: $inneroffset 
+        width: $circleinner
+        height: $circleinner
+        border-radius: $circleinner
+        position:absolute
+        background-color: red 

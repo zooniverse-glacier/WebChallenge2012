@@ -1,3 +1,5 @@
+$image_width = 225px
+
 .people
   clearfix()
   .person
@@ -18,10 +20,8 @@
     .popup
       display: none
       position: absolute
-      top: -20px
-      left: 40%
-      width: 260px
-      height: 225px
+      width: $image_width * 2 - 6
+      height: 158px
       padding: 14px 17px
       z-index: 1
       background: rgba(#222, 1)
@@ -31,3 +31,18 @@
       line-height: 1.3em
       span
         display: block
+
+      $popup-top = 185px
+      &.first
+        display: block
+        top: $popup-top
+        left: 0
+      &.second
+        display: block
+        top: $popup-top
+        left: 0
+      &.third
+        display: block
+        top: $popup-top
+        right: 0
+

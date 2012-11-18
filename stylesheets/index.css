@@ -114,5 +114,8 @@ body > footer{color:#fff;margin:0 auto;max-width:1000px;text-align:center;width:
 .people .person:nth-child(3n){margin-right:0}
 .people .person:nth-child(3n+1){margin-left:0}
 .people .person .image{border:3px solid #fff}
-.people .person .popup{display:none;position:absolute;top:-20px;left:40%;width:260px;height:225px;padding:14px 17px;z-index:1;background:#222;-webkit-box-shadow:0 0 10px rgba(0,0,0,0.8);box-shadow:0 0 10px rgba(0,0,0,0.8);color:#fafafa;font-size:12px;line-height:1.3em;}
+.people .person .popup{display:none;position:absolute;width:444px;height:158px;padding:14px 17px;z-index:1;background:#222;-webkit-box-shadow:0 0 10px rgba(0,0,0,0.8);box-shadow:0 0 10px rgba(0,0,0,0.8);color:#fafafa;font-size:12px;line-height:1.3em;}
 .people .person .popup span{display:block}
+.people .person .popup.first{display:block;top:185px;left:0}
+.people .person .popup.second{display:block;top:185px;left:0}
+.people .person .popup.third{display:block;top:185px;right:0}

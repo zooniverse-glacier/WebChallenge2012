@@ -3,8 +3,9 @@ title: Programs
 layout: default
 ---
 
-<section class="normal intro" style="text-align: center">
+<section class="normal intro">
   <h1><strong>Programs</strong></h1>
+
   <nav>
     {% for page in site.pages %}
       {% if page.contentTag == "programsSection" %}
@@ -12,8 +13,6 @@ layout: default
       {% endif %}
     {% endfor %}
   </nav>
-
-  <p>Lorem ipsum dolor sit amet. Jam that in there real quick</p>
 </section>
 
 {% for page in site.pages %}
@@ -30,7 +29,7 @@ layout: default
           </div>
         {% endif %}
 
-        <div class="{% if page.photo %}wide{% endif %} column">
+        <div class="{% if page.photo %}wide column{% endif %}">
           <div class="content markdownSection">
             {{ page.content }}
           </div>

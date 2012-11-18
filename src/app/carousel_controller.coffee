@@ -19,27 +19,33 @@ class CarouselController
         <div class="carousel-details">
           <h2 class="carousel-title">#{feedItem.title}</h2>
           <p class="carousel-description">#{feedItem.description}</p>
-          <a href="#{feedItem.url} class="carousel-link">#{feedItem.linkText}</a>
+          <a href="#{feedItem.url}" class="carousel-link">#{feedItem.linkText}</a>
         </div>
       </div>
     """
 
   controls: =>
-    radios = new String
-    radios = radios + """<input type="radio" name="carousel" value="#{num}">""" for num in [0..3]
-    '<div class="carousel-controls">' + radios + "</div>"
+    """
+      <div class="carousel-controls">
+        <img class="front" src="/images/front-piece.png" />
+        <img class="back" src="/images/back-piece.png" />
+        <div id="first" data-id="0" class="circle"></div>
+        <div id="second" data-id="1" class="circle"></div>
+        <div id="third" data-id="2" class="circle"></div>
+        <div id="fourth" data-id="3" class="circle"></div>
+      </div>
+    """
 
   render: =>
     @el.append @template(item) for item in @feed
     @el.append @controls()
-    @el.find("input[value=\"#{@item}\"]").prop('checked', true)
-    @el.find('input[name="carousel"]').on 'click', @goToItem
+    @el.find('.circle').on 'click', @goToItem
     @timerId = setInterval @goToNext, 10000
 
   goToItem: (e) =>
     clearInterval @timerId
     @el.removeClass @countArray[@item]
-    @item = e.currentTarget.value
+    @item = $(e.currentTarget).attr ('data-id')
     @el.addClass @countArray[@item]
 
   goToNext: =>
@@ -56,7 +62,6 @@ class CarouselController
        else
          @forward = true
          @item += 1
-    @el.find("input[value=\"#{@item}\"]").prop('checked', true)
     @el.addClass @countArray[@item]
 
 window.App.CarouselController = CarouselController

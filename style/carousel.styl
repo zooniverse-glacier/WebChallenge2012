@@ -1,4 +1,5 @@
 $carousel-width = 100%
+$dot-spacing = 20px
 
 #content > section.carousel
   height: 430px
@@ -13,17 +14,29 @@ $carousel-width = 100%
     .carousel-item
       transform: translateX(0px)
 
+    .back
+      transform: translateX(0px)
+
   &.second
     .carousel-item
       transform: translateX($carousel-width * -1)
+
+    .back
+      transform: translateX($dot-spacing)
 
   &.third
     .carousel-item
       transform: translateX($carousel-width * -2)
 
+    .back
+      transform: translateX($dot-spacing * 2)
+
   &.fourth
     .carousel-item
       transform: translateX($carousel-width * -3)
+
+    .back
+      transform: translateX($dot-spacing * 3)
 
   .carousel-item
     display: inline-block
@@ -73,7 +86,35 @@ $carousel-width = 100%
     position: absolute
     top: 405px
     left: 460px
-    
-    input
-      @extends .standard-button
-      background: $green
+
+    .circle
+      width: $dot-spacing + 1
+      position: absolute
+      height: 20px
+      z-index: 4
+      top: 4px
+
+    #first
+      left: 4px
+
+    #second
+      left: $dot-spacing + 9px
+
+    #third
+      left: (2 * $dot-spacing + 2px) + 7px
+
+    #fourth
+      left: (3 * $dot-spacing + 2px) + 7px
+
+    .front
+       left: 0
+       position: relative
+       top: 0
+       z-index: 1
+
+    .back
+      left: 9px
+      position: absolute
+      top: 10px
+      z-index: 0
+      transition: transform 1.0s ease-in-out

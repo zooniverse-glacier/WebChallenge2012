@@ -15,12 +15,15 @@
 
   <body>
     {% include header.html %}
+
     <div id='content'>
 
       {{ content }}
 
       {% include footer.html %}
     </div>
+
+    {% include subfooter.html %}
 
     <script src="/javascripts/jquery-1.8.3.min.js"></script>
     <script src="/javascripts/d3.v2.min.js"></script>

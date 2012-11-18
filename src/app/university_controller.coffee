@@ -16,6 +16,8 @@ class UniversityController extends window.App.Controller
     @startList @models
 
   listTemplate: (model) ->
+    model.area_of_service = model.area_of_service || 'Not available'
+    
     """
       <section class="school normal">
         <div class="image">
@@ -27,9 +29,12 @@ class UniversityController extends window.App.Controller
         <div class="content">
           <header>
             <div class="name">#{model.name}</div class="name">
-            <div class="location">Kampala, Uganda</div>
           </header>
+          <h4>Definition of Service</h4>
           <p>#{model.definition_of_service}</p>
+
+          <h4>Area of Service</h4>
+          <p>#{model.area_of_service}</p>
         </div>
       </section>
     """

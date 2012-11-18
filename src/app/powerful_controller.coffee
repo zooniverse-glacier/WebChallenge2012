@@ -7,7 +7,6 @@ class PowerfulController
     window.App.WordpressFeed.fetch 10, 'powerful'
 
   template: (feedItem) =>
-    @count += 1
     """
       <div class="two columns">
         <div class="narrow column">
@@ -15,7 +14,11 @@ class PowerfulController
             <img src="#{feedItem.image}" />
           </figure>
         </div>
+        
       <div class="wide column">
+        <h4>#{feedItem.title}</h4>
+        <p>#{feedItem.description} <a href="#{feedItem.url}">#{feedItem.linkText}</a></p>
+      </div>
       """
 
         

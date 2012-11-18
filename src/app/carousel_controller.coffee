@@ -19,7 +19,7 @@ class CarouselController
         <div class="carousel-details">
           <h2 class="carousel-title">#{feedItem.title}</h2>
           <p class="carousel-description">#{feedItem.description}</p>
-          <a href="#{feedItem.url} class="carousel-link">#{feedItem.linkText}</a>
+          <a href="#{feedItem.url}" class="carousel-link">#{feedItem.linkText}</a>
         </div>
       </div>
     """

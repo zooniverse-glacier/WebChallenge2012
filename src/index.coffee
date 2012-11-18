@@ -9,6 +9,8 @@ $ ->
   else if location.pathname is '/about.html'
     boardContoller = new App.PeopleController 'board'
     teamController = new App.PeopleController 'team'
+  else if location.pathname is '/programs.html'
+    powerfulController = new App.PowerfulController()
 
   for el in $('.countdown')
     new App.Countdown {el, target: new Date 2013, 0, 15}

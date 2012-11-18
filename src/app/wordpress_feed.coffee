@@ -21,6 +21,6 @@ class WordpressFeed extends window.App.Events
     @content = entry.content
     @date = new Date entry.publishedDate
     @linkText = "Learn More"
-    @image = entry.mediaGroups[0].contents[1].url.split('?')[0] + "?w=1000" || "http://placehold.it/1000x400"
+    @image = entry.mediaGroups[0].contents[1]?.url.split('?')[0] + "?w=1000" || "http://placehold.it/1000x400"
 
 window.App.WordpressFeed = WordpressFeed

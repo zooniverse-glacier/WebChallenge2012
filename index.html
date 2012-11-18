@@ -8,9 +8,11 @@ layout: default
     <section class="home-section">
       <header><strong>{{ page.title }}</strong></header>
 
+      {% if page.photo %}
       <figure>
         <img src="{{ page.photo }}" />
       </figure>
+      {% endif %}
 
       <div class="content markdownSection">
         {{ page.content }}

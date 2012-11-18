@@ -3,7 +3,7 @@ class Controller
     @el = $(@selector)
     @models = new Object
     @model.on 'fetch-all', (models) =>
-      @models[model.name] = model for model in models
+      @models[model.slug] = model for model in models
       @startRouting()
     @model.fetchAll()
 
@@ -17,23 +17,33 @@ class Controller
   route: =>
     hash = location.hash
     if hash is ''
-      @index()
+      @renderAll()
     else
-      @show hash
-
-  index: =>
-    @renderAll()
-
-  show: (name) =>
-    @renderOne @models[name]
+      slug = hash.substr(2, hash.length - 2)
+      @renderOne @models[slug]
 
   renderAll: =>
-    @el.append @listTemplate(model) for key, model of @models
-    @startList()
+    compiled = (@listTemplate(model) for key, model of @models)
+    @el.html compiled.join(" ")
+    header = 
+      """
+      <section class="normal">
+        <h1><strong>Our Schools</strong></h1>
+      </section>
+      """
 
-  renderOne: (id) =>
-    model = @model[name]
-    @el.append @itemTemplate(model)
-    @start()
+    @el.prepend header
+    @startList @models
+
+  renderOne: (model) =>
+    @el.html @itemTemplate(model)
+    header = 
+      """
+      <section class="normal">
+        <h1><strong>#{model.name}</strong></h1>
+      </section>
+      """
+    @el.prepend header
+    @start model
 
 window.App.Controller = Controller

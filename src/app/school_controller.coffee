@@ -35,14 +35,14 @@ class SchoolController extends window.App.Controller
             <div class="location">Kampala, Uganda</div>
           </header>
           <p>#{model.story}</p>
-          <p><a href="#/#{model.id}" class="standard-button green">View site</a></p>
+          <p><a href="#/#{model.slug}" class="standard-button green">View site</a></p>
         </div>
       </section>
     """
 
   itemTemplate: (model) ->
     """
-      <section class="school">
+      <section class="school normal">
         <div class="image">
           <figure>
             <div class="progress one-third"></div>
@@ -56,18 +56,26 @@ class SchoolController extends window.App.Controller
             <div class="location">Kampala, Uganda</div>
           </header>
           <p>#{model.story}</p>
-          <p><a href="#/#{model.id}">View site</a></p>
         </div>
       </section>
 
-      <div id="timeline"></div>
+      <section class="normal">
+        <h1><strong>Project Timeline</strong></h1>
+        <div id="school_timeline"></div>
+      </section>
     """
 
-  startList: =>
-    map = new window.App.Map(element: 'map')
+  startList: (schools) =>
+    unless @map
+      @map = new window.App.Map(element: 'map')
+      @map.addSchool(school) for school in schools
     
-  start: =>
-    timeline = new window.App.Timeline("#timeline", @model, 1040)
+  start: (school) =>
+    unless @map
+      @map = new window.App.Map(element: 'map', lat: school.lat, lng: school.lng)
+    else
+      @map.centerSchool school.lat, school.lng
+    timeline = new window.App.Timeline(school, "#school_timeline")
 
 
 window.App.SchoolController = SchoolController

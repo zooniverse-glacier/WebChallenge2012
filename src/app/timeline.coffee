@@ -7,10 +7,10 @@ class Timeline
     '#FAAD18'
   ]
 
-  constructor: (school, el, width) ->
+  constructor: (school, el) ->
     @school= school
     @el = $(el)
-    @width = width
+    @width = @el.width()
     @startTime = moment(school.events[0].date).subtract('days',20)
     @endTime = moment(school.events[school.events.length-1].date).add('days',20)
     @totalDays = moment(@startTime).diff(@endTime, 'days')
@@ -23,29 +23,30 @@ class Timeline
   render:->
     markers = (@renderEvent(event,index) for event,index in @school.events )  
     content = """
-      <div style='width:#{@width}px' class='timeline'>
+      <div class='timeline'>
           <div class='bar'></div>
           <ul class='inner'> 
               <li class='marker stage0' style='left:0px'><div style='background-color:black' class='markerInner'></div></li>
                 #{markers.join(" ")}
-              <li class='marker stage0' style='left:#{@width}px'><div  style='background-color:black' class='markerInner'></div></li>
+              <li class='marker stage0' style='right: 0'><div  style='background-color:black' class='markerInner'></div></li>
           </ul>
       </div>
     """
     @el.html content
   
-  renderEvent:(event,id)->
+  renderEvent: (event,id) ->
     xPoint = @convertX(event)
-    stage  = event.stage
-    stageCol = @stage_colors[stage-1]
+    stage  = event.phase
+    stageCol = @stage_colors[stage - 1]
 
-    tooltip="""
+    tooltip =
+      """
       <div class='tooltip'>
-        <p class='phase'>Phase #{event.stage}</p>
-        <p class='date'>#{moment(event.date).format("Do MMMM YYYY")}</p>
-        <p class='event'>#{event.text}</p>
+        <p class='phase'>Phase #{event.phase}</p>
+        <p class='date'>#{moment(event.date).format("MMM Do YYYY")}</p>
+        <p class='event'>#{event.description}</p>
       </div>
-    """
+      """
 
     """
       <li class='marker stage#{stage}' data-id=#{id} style='left:#{xPoint}px'> #{tooltip} <div style='background-color:#{stageCol}' class='markerInner'></div></li>

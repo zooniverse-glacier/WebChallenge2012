@@ -1340,15 +1340,18 @@
     };
 
     function WordpressFeed(entry) {
-      var _ref;
-      console.log(entry);
+      var _ref, _ref1;
       this.title = entry.title;
       this.url = entry.link;
       this.description = entry.contentSnippet;
       this.content = entry.content;
       this.date = new Date(entry.publishedDate);
       this.linkText = "Learn More";
-      this.image = ((_ref = entry.mediaGroups[0].contents[1]) != null ? _ref.url.split('?')[0] : void 0) + "?w=1000" || "http://placehold.it/1000x400";
+      if (!((_ref = entry.mediaGroups[0].contents[1]) != null ? _ref.url.split('?')[0] : void 0)) {
+        this.image = 'images/carousel.jpg';
+      } else {
+        this.image = ((_ref1 = entry.mediaGroups[0].contents[1]) != null ? _ref1.url.split('?')[0] : void 0) + "?w=1000" || "http://placehold.it/1000x400";
+      }
     }
 
     return WordpressFeed;

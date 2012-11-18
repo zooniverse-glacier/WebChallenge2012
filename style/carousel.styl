@@ -1,0 +1,71 @@
+$carousel-width = 1024px
+
+.carousel
+  height: 430px
+  width: $carousel-width
+  overflow: hidden
+  position: relative
+  border-bottom: 1px solid #cecdc5
+  box-shadow: 0px 1px 0px #fff
+
+  &.first
+    .carousel-item
+      transform: translateX(0px)
+
+  &.second
+    .carousel-item
+      transform: translateX($carousel-width * -1)
+
+  &.third
+    .carousel-item
+      transform: translateX($carousel-width * -2)
+
+  &.fourth
+    .carousel-item
+      transform: translateX($carousel-width * -3)
+
+  .carousel-item
+    display: inline-block
+    position: absolute
+    margin: 0
+    padding: 0
+    top: 0
+    transition: transform 1.0s ease-in-out
+
+    &.second
+      left: $carousel-width
+
+    &.third
+      left: $carousel-width * 2
+
+    &.fourth
+      left: $carousel-width * 3
+
+    .carousel-details
+      position: absolute
+      left: 105px
+      top: 220px
+      width: 375px
+      color: white
+
+      h2
+        font-size: 40px
+        font-family: "Open Sans Condensed"
+        font-weight: 700
+        margin-top: 0
+        margin-bottom: 5px
+
+      p
+        font-size: 16px
+        text-shadow: 0px 1px 3px rgba(0,0,0,.6)
+        margin-top: 0
+        margin-bottom: 10px
+
+      a
+        @extends .standard-button
+
+  .carousel-controls
+    position: absolute
+    top: 405px
+    left: 460px
+

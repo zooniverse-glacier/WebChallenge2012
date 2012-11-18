@@ -97,7 +97,7 @@ class SchoolController extends window.App.Controller
             <p class='schoolClassStats'>Teachers: #{model["Teachers"] || 'unknown' } Students: #{model["Students"] || 'unknown' } </p>
             <p style='font-size:15px'>Donations Required</p>
             #{@donationsTemplate model}
-            <div class="column"><p><a href="donateGift" class="orange standard-button">Give a gift</a></p></div>
+            <div class="column"><p><a href="donateGift.html" class="orange standard-button">Give a gift</a></p></div>
 
           </div>
            <div class='storyButtons'>

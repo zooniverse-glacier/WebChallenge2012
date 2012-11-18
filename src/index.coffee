@@ -4,25 +4,17 @@ $ ->
   map = new window.App.Map 
     element : 'map'
 
-  schools = new Array
-  unis = new Array
+  schools = new Object
 
   App.School.on 'fetch-all', (models) ->
-    schools = models
     map.addSchool model for model in models
 
-  App.University.on 'fetch-all', (models) ->
-    unis = models
-    university_controller = new App.UniversiteController unis
-
-  # App.School.fetchAll()
   App.MarkFudge.fudge() 
 
-  # if location.pathname is '/schools'
-  #   school_controller = new App.SchoolController schools
-
-  # else if location.pathname is '/universities'
-  #   App.University.fetchAll()
+  if location.pathname is '/schools'
+    school_controller = new App.SchoolController()
+  else if location.pathname is '/universities'
+    university_controller = new App.UniversityController()
 
   sampleSchool = 
     location: [1.37,32.29]
